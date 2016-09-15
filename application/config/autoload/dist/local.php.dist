@@ -21,5 +21,10 @@ return [
                ]
            ]
        ],
+        'configuration' => [
+            'orm_default' => [
+                'generate_proxies' => true,
+            ],
+        ],
     ],
 ];
