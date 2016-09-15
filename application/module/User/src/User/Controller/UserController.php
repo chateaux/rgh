@@ -1,8 +1,8 @@
 <?php
 namespace User\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
 use User\Service\AuthenticationService;
+use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class UserController extends AbstractActionController
@@ -18,7 +18,7 @@ class UserController extends AbstractActionController
 
     public function accountAction()
     {
-        if ( ! $this->authService->hasIdentity() ) {
+        if (! $this->authService->hasIdentity()) {
             return $this->redirect()->toRoute('user/login');
         }
 
@@ -26,8 +26,5 @@ class UserController extends AbstractActionController
             [
             ]
         );
-
     }
-
-
 }

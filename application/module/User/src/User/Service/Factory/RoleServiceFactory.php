@@ -1,9 +1,9 @@
 <?php
 namespace User\Service\Factory;
 
+use User\Service\RoleService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use User\Service\RoleService;
 
 class RoleServiceFactory implements FactoryInterface
 {
@@ -23,5 +23,4 @@ class RoleServiceFactory implements FactoryInterface
             $rolesRepository
         );
     }
-
 }

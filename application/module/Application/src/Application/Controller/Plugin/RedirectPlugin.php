@@ -1,8 +1,10 @@
 <?php
 namespace Application\Controller\Plugin;
+
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 
-class RedirectPlugin extends AbstractPlugin {
+class RedirectPlugin extends AbstractPlugin
+{
 
     public function redirectParams()
     {
@@ -11,5 +13,4 @@ class RedirectPlugin extends AbstractPlugin {
 
         return $queryParams;
     }
-
 }

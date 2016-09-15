@@ -5,10 +5,10 @@ use Application\Controller\LoginRegisterController;
 use Application\Form\LoginForm;
 use Application\Form\RegisterForm;
 use Application\Library\Session\CookieService;
+use User\Service\AuthenticationService;
 use User\Service\UserService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use User\Service\AuthenticationService;
 
 class LoginRegisterControllerFactory implements FactoryInterface
 {

@@ -8,7 +8,6 @@
 namespace Application\Listener;
 
 use Application\Controller\ApplicationController;
-use Toolbox\Library\ApplicationSettings\ApplicationSettings;
 use Toolbox\Library\Mail\Service\MailService;
 use Toolbox\Library\Notifications\NotificationsLogger;
 use User\Entity\User;

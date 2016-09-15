@@ -24,8 +24,6 @@ class IndexController extends AbstractActionController
      */
     public function homeAction()
     {
-
-
         return new ViewModel();
     }
 
@@ -73,5 +71,4 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
-
 }

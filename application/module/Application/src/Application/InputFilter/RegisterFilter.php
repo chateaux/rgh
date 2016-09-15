@@ -21,6 +21,5 @@ class RegisterFilter extends UserFilter
                 'fields'            => 'email'
             ]
         );
-
     }
 }

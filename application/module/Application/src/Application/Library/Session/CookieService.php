@@ -1,5 +1,6 @@
 <?php
 namespace Application\Library\Session;
+
 use Application\Library\Settings\ApplicationSettings;
 
 /**
@@ -15,8 +16,7 @@ class CookieService
      */
     public function __construct(
         ApplicationSettings $applicationSettings
-    )
-    {
+    ) {
         $this->applicationSettings = $applicationSettings;
     }
 
@@ -27,7 +27,6 @@ class CookieService
      */
     public function setCookie($params)
     {
-
         $domain = $this->applicationSettings->getSettings('cookie_domain');
 
         $name = (isset($params['name'])) ? $params['name'] : 'referrer';
@@ -41,8 +40,7 @@ class CookieService
         /**
          * Test whether the cookie exists before updating
          */
-        if (!$this->exists($name))
-        {
+        if (!$this->exists($name)) {
             setcookie(
                 $name,
                 $value,
@@ -53,7 +51,6 @@ class CookieService
                 $httponly
             );
         }
-
     }
 
     /**
@@ -73,18 +70,17 @@ class CookieService
      */
     public function exists($name)
     {
-        return ( $this->getCookie($name) ) ? true : false;
+        return ($this->getCookie($name)) ? true : false;
     }
 
     /**
      * Remove a cookie
      * @param $name
      */
-    function deleteCookie($name)
+    public function deleteCookie($name)
     {
-        if ($this->exists($name))
-        {
-            setcookie($name, "", time()-(60*60*24) );
+        if ($this->exists($name)) {
+            setcookie($name, "", time()-(60*60*24));
         }
     }
 
@@ -93,25 +89,21 @@ class CookieService
      * @param string $name
      * @return mixed|null
      */
-    function decodeCookie($name = 'referrer')
+    public function decodeCookie($name = 'referrer')
     {
         $cookie = $this->getCookie($name);
 
         /**
          * Test and extract the cookie
          */
-        if (is_object(json_decode($cookie)))
-        {
-            $cookie = json_decode($cookie,true);
+        if (is_object(json_decode($cookie))) {
+            $cookie = json_decode($cookie, true);
         }
 
-        if (is_object(json_decode($cookie['data'])))
-        {
-            $cookie['data'] = json_decode($cookie['data'] , true);
+        if (is_object(json_decode($cookie['data']))) {
+            $cookie['data'] = json_decode($cookie['data'], true);
         }
 
         return $cookie;
-
     }
-
 }

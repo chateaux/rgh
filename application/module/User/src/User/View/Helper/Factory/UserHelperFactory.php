@@ -1,13 +1,12 @@
 <?php
 namespace User\View\Helper\Factory;
 
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\ServiceManager\FactoryInterface;
-use User\View\Helper\UserHelper;
 use User\Service\AuthenticationService;
+use User\View\Helper\UserHelper;
+use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 class UserHelperFactory implements FactoryInterface
-
 {
     public function createService(ServiceLocatorInterface $sl)
     {

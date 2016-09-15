@@ -3,9 +3,9 @@ namespace User\Service;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
+use DoctrineModule\Paginator\Adapter\Selectable as SelectableAdapter;
 use User\Entity\HierarchicalRole;
 use Zend\Paginator\Paginator;
-use DoctrineModule\Paginator\Adapter\Selectable as SelectableAdapter;
 
 class RoleService
 {
@@ -23,8 +23,7 @@ class RoleService
         ObjectManager    $objectManager,
         ObjectRepository $rolesRepository
 
-    )
-    {
+    ) {
         $this->rolesRepository    = $rolesRepository;
         $this->objectManager      = $objectManager;
     }
@@ -47,7 +46,8 @@ class RoleService
      * @param HierarchicalRole $roleObject
      * @return bool|mixed
      */
-    public function update(HierarchicalRole $roleObject) {
+    public function update(HierarchicalRole $roleObject)
+    {
         try {
             $this->objectManager->persist($roleObject);
             $this->objectManager->flush();
@@ -78,10 +78,11 @@ class RoleService
      * @param $count
      * @return mixed|Paginator
      */
-    public function getPaged($page, $count) {
+    public function getPaged($page, $count)
+    {
         $adapter = new SelectableAdapter($this->rolesRepository);
         $paginator = new Paginator($adapter);
-        return $paginator->setCurrentPageNumber( (int) $page )->setItemCountPerPage( (int) $count );
+        return $paginator->setCurrentPageNumber((int) $page)->setItemCountPerPage((int) $count);
     }
 
     public function delete(HierarchicalRole $myObject)
@@ -91,18 +92,17 @@ class RoleService
 
         //Guest Role must not be deleted unless we want this app to croak
 
-        if ( in_array( $myObject->getName(), array('guest','admin') ) ) {
+        if (in_array($myObject->getName(), ['guest', 'admin'])) {
             return "That is a protected role.";
         }
 
         try {
             $this->objectManager->remove($myObject);
             $this->objectManager->flush();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return "There was an exception, please updated all users associated to this role and try again.";
         }
 
         return true;
     }
-
 }

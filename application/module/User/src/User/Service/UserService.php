@@ -290,5 +290,4 @@ class UserService
         $paginator = new Paginator($adapter);
         return $paginator->setCurrentPageNumber((int) $page)->setItemCountPerPage((int) $count);
     }
-
 }

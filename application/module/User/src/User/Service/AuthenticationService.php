@@ -9,7 +9,6 @@ use Zend\Authentication\AuthenticationService as BaseAuthService;
 use Zend\Authentication\Result;
 use Zend\Authentication\Storage\Session;
 use Zend\Authentication\Storage\StorageInterface;
-use Zend\Crypt\Password\PasswordInterface;
 use Zend\EventManager\EventManagerInterface;
 use ZfcRbac\Identity\IdentityProviderInterface;
 

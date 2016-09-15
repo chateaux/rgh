@@ -3,7 +3,6 @@ namespace Application\Library\Mail\Service;
 
 use Application\Library\Mail\Options\ModuleOptions;
 use Zend\Mail\Message as MailMessage;
-
 use Zend\Mail\Transport\TransportInterface;
 use Zend\Mime\Message as MimeMessage;
 use Zend\Mime\Part as MimePart;
@@ -73,7 +72,6 @@ class MailService
 
     public function sendMail()
     {
-
         if (false === $this->checkMailValidity()) {
             throw new \InvalidArgumentException('E-Mail can not be sent as the required fields where not filled in.');
         }
@@ -109,8 +107,7 @@ class MailService
             $mailMessage->setBcc($this->mailBcc);
         }
 
-        if ($this->mailCc != '')
-        {
+        if ($this->mailCc != '') {
             $mailMessage->setCc($this->mailCc);
         }
 
@@ -127,7 +124,6 @@ class MailService
         } catch (\Exception $e) {
             throw new \Exception($e);
         }
-
     }
 
     /**

@@ -18,8 +18,7 @@ class UserPlugin extends AbstractPlugin
         AuthenticationService $authService,
         UserService $userService,
         RoleService $roleService
-    )
-    {
+    ) {
         $this->authService = $authService;
         $this->userService = $userService;
         $this->roleService = $roleService;
@@ -34,13 +33,10 @@ class UserPlugin extends AbstractPlugin
     {
         $roleObject = $this->roleService->findOneByName($roleName);
 
-        if (!$roleObject instanceof HierarchicalRole)
-        {
+        if (!$roleObject instanceof HierarchicalRole) {
             throw new \Exception("Unable to locate a role.");
         }
 
         return $roleObject;
     }
-
-
 }

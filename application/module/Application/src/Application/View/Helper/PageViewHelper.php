@@ -44,7 +44,6 @@ class PageViewHelper extends AbstractHelper
                     </div>
                 </div>
             </div>';
-
     }
 
     /**
@@ -55,10 +54,10 @@ class PageViewHelper extends AbstractHelper
     {
         $uri_parts = $_SERVER['REQUEST_URI'];
 
-        if (substr($uri_parts,0,1) == '/') {
-            $uri_parts = substr($uri_parts,1);
+        if (substr($uri_parts, 0, 1) == '/') {
+            $uri_parts = substr($uri_parts, 1);
         }
-        $parts = explode('/',$uri_parts);
+        $parts = explode('/', $uri_parts);
 
         return [
             'grand_parent' => strtolower(isset($parts[0]) ? $parts[0] : ''),
@@ -67,7 +66,4 @@ class PageViewHelper extends AbstractHelper
             'grand_child' => strtolower(isset($parts[3]) ? $parts[3] : '')
         ];
     }
-
-
-
 }

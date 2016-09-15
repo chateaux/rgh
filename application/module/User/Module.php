@@ -26,5 +26,4 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
             ],
         ];
     }
-
 }

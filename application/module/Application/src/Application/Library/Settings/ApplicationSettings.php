@@ -18,8 +18,7 @@ class ApplicationSettings
      */
     public function getSettings($settings)
     {
-        if ( ! isset($this->settings[$settings]))
-        {
+        if (! isset($this->settings[$settings])) {
             return false;
         }
 
@@ -34,6 +33,4 @@ class ApplicationSettings
     {
         return $this->settings;
     }
-
 }
-

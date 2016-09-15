@@ -4,11 +4,9 @@ namespace User\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Rbac\Role\RoleInterface;
-use ZfcRbac\Identity\IdentityInterface;
 use Zend\Stdlib\ArraySerializableInterface;
-use Exception;
+use ZfcRbac\Identity\IdentityInterface;
 
 /**
  * @ORM\Entity
@@ -550,7 +548,7 @@ class User implements
      */
     public function addRoles(Collection $roles)
     {
-        foreach($roles as $role) {
+        foreach ($roles as $role) {
             $this->roles->add($role);
         }
     }
@@ -651,7 +649,4 @@ class User implements
     {
         $this->title = $title;
     }
-
-
-
 }

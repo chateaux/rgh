@@ -10,7 +10,6 @@ namespace User\Entity;
 use Doctrine\Common\Collections\Collection;
 use Rbac\Role\RoleInterface;
 
-
 /**
  * @ORM\Entity
  *

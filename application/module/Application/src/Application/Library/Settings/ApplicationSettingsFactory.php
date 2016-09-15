@@ -13,17 +13,13 @@ class ApplicationSettingsFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-
         $settings = $serviceLocator->get('Config');
-        if (isset($settings['toolbox-settings']))
-        {
+        if (isset($settings['toolbox-settings'])) {
             return new ApplicationSettings(
                 $settings['toolbox-settings']
             );
         }
 
         throw new \Exception("Please set the toolbox settings...");
-
-
     }
 }

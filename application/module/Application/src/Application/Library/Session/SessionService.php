@@ -19,10 +19,9 @@ class SessionService
     /**
      * @param StorageInterface $storage
      */
-    function __construct(
+    public function __construct(
         StorageInterface $storage = null
-    )
-    {
+    ) {
         $this->storage = $storage ? : new Session('UserStorage');
     }
 
@@ -42,12 +41,11 @@ class SessionService
         /**
          * Note the latter array overwrites the former
          */
-        $appendedData = array_merge( $currentData , $newData );
+        $appendedData = array_merge($currentData, $newData);
 
         $this->updateSessionData($appendedData);
 
         return $appendedData;
-
     }
 
     /**
@@ -60,7 +58,6 @@ class SessionService
         }
 
         return $this->storage->read();
-
     }
 
     /**
@@ -76,7 +73,6 @@ class SessionService
      */
     public function updateSessionData($newData)
     {
-
         $this->storage->write($newData);
     }
 
@@ -88,8 +84,7 @@ class SessionService
     {
         $data = $this->getData();
 
-        if (isset($data[$key]))
-        {
+        if (isset($data[$key])) {
             return $data[$key];
         }
 
@@ -105,8 +100,7 @@ class SessionService
     {
         $data = $this->getData();
 
-        if (!isset($data[$key]))
-        {
+        if (!isset($data[$key])) {
             return false;
         }
 
@@ -114,7 +108,5 @@ class SessionService
         $this->updateSessionData($data);
 
         return true;
-
     }
-
 }

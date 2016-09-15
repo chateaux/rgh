@@ -3,13 +3,13 @@ namespace Application\Controller;
 
 use Application\Library\Session\CookieService;
 use User\Entity\User;
+use User\Service\AuthenticationService;
 use User\Service\UserService;
+use Zend\Authentication\Result;
+use Zend\Form\FormInterface;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Zend\Form\FormInterface;
-use User\Service\AuthenticationService;
-use Zend\Authentication\Result;
 
 class LoginRegisterController extends AbstractActionController
 {
@@ -38,12 +38,10 @@ class LoginRegisterController extends AbstractActionController
      */
     public function loginAction()
     {
-        $redirect_url = $this->params()->fromQuery('redirectTo',null);
+        $redirect_url = $this->params()->fromQuery('redirectTo', null);
 
         if ($this->authService->hasIdentity()) {
-
-            if (is_null($redirect_url))
-            {
+            if (is_null($redirect_url)) {
                 return $this->redirect()->toRoute('user/my-account');
             }
 
@@ -63,9 +61,9 @@ class LoginRegisterController extends AbstractActionController
             );
         }
 
-        $this->loginForm->setData( $prg );
+        $this->loginForm->setData($prg);
 
-        if ( ! $this->loginForm->isValid() ) {
+        if (! $this->loginForm->isValid()) {
             return new ViewModel(
                 [
                     'form' => $this->loginForm,
@@ -75,7 +73,7 @@ class LoginRegisterController extends AbstractActionController
         }
 
         $userData = $this->loginForm->getData();
-        $this->authService->setCredentials( $userData['username'] , $userData['password'] );
+        $this->authService->setCredentials($userData['username'], $userData['password']);
         $authResult = $this->authService->authenticate();
 
         if (false === ($authResult === Result::SUCCESS)) {
@@ -83,11 +81,10 @@ class LoginRegisterController extends AbstractActionController
                 'Your credentials failed. please try again'
             );
 
-            return $this->redirect()->toRoute('login', [] , $this->RedirectPlugin()->redirectParams() );
+            return $this->redirect()->toRoute('login', [], $this->RedirectPlugin()->redirectParams());
         }
 
         if (null ===  $redirect_url) {
-
             return $this->redirect()->toRoute('user/account');
         }
 
@@ -99,7 +96,6 @@ class LoginRegisterController extends AbstractActionController
      */
     public function logoutAction()
     {
-
         $this->authService->clearIdentity();
 
         return $this->redirect()->toRoute('login');
@@ -107,7 +103,7 @@ class LoginRegisterController extends AbstractActionController
 
     public function registerAction()
     {
-        if ( $this->authService->hasIdentity()) {
+        if ($this->authService->hasIdentity()) {
             return $this->redirect()->toRoute('register-landing');
         }
 
@@ -119,20 +115,17 @@ class LoginRegisterController extends AbstractActionController
         $referrerObject = null;
         $data = [];
 
-        if ($this->cookieService->exists('referrer'))
-        {
+        if ($this->cookieService->exists('referrer')) {
             $cookie = $this->cookieService->decodeCookie();
             $aff_id = $cookie['referrer'];
 
             $referrerObject = $this->userService->findByUuid($aff_id);
 
-            if (!$referrerObject instanceof User)
-            {
+            if (!$referrerObject instanceof User) {
                 $referrerObject = null;
             } else {
                 $data = $cookie['data'];
             }
-
         }
 
         $userObject = new User();
@@ -153,7 +146,6 @@ class LoginRegisterController extends AbstractActionController
         $this->registerForm->setData($prg);
 
         if (! $this->registerForm->isValid()) {
-
             return new ViewModel([
                 'form' => $this->registerForm
             ]);
@@ -171,27 +163,22 @@ class LoginRegisterController extends AbstractActionController
 
         $authResult = $this->authService->authenticate();
 
-        if (false === ( $authResult === Result::SUCCESS) ) {
+        if (false === ($authResult === Result::SUCCESS)) {
             throw new \Exception("Unable to log user in - please contact support");
         }
 
         $redirectTo = $this->params()->fromQuery('redirectTo');
 
-        return $this->redirect()->toRoute('register-landing',[], ['query' => [ 'redirectTo'=> $redirectTo]]);
-
+        return $this->redirect()->toRoute('register-landing', [], ['query' => [ 'redirectTo'=> $redirectTo]]);
     }
 
     public function registerLandingAction()
     {
-
-
-
         $userObject = $this->authService->getIdentity();
         $activation_code = $userObject->getActivationCode();
         $redirectTo = $this->params()->fromQuery('redirectTo');
 
-        if (!$activation_code)
-        {
+        if (!$activation_code) {
             $activation_code = \MdgUuid\Generator::getV4();
             $userObject->setActivationCode($activation_code);
             $this->userService->update($userObject);
@@ -212,5 +199,4 @@ class LoginRegisterController extends AbstractActionController
             ]
         );
     }
-
 }

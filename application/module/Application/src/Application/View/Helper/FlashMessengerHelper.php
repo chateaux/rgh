@@ -4,7 +4,6 @@ namespace Application\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 
-
 class FlashMessengerHelper extends AbstractHelper
 {
 

@@ -20,6 +20,6 @@ class ModuleOptionsFactory implements FactoryInterface
             return new ModuleOptions($config['toolbox_mail']);
         }
 
-        return new ModuleOptions(array());
+        return new ModuleOptions([]);
     }
 }

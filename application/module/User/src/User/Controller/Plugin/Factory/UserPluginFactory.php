@@ -5,11 +5,10 @@ use User\Controller\Plugin\UserPlugin;
 use User\Service\AuthenticationService;
 use User\Service\RoleService;
 use User\Service\UserService;
-use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 class UserPluginFactory implements FactoryInterface
-
 {
     public function createService(ServiceLocatorInterface $sl)
     {

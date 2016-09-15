@@ -8,15 +8,14 @@ use User\Form\Factory\UserFieldsetFactory;
 use User\Form\UserFieldset;
 use User\InputFilter\Factory\UserFilterFactory;
 use User\InputFilter\UserFilter;
-use User\Service\Factory\UserServiceFactory;
-use User\Service\UserService;
-use User\Service\RoleService;
+use User\Service\AuthenticationService;
+use User\Service\Factory\AuthenticationServiceFactory;
 use User\Service\Factory\RoleServiceFactory;
-
+use User\Service\Factory\UserServiceFactory;
+use User\Service\RoleService;
+use User\Service\UserService;
 use User\View\Helper\Factory\UserHelperFactory;
 use Zend\Authentication\AuthenticationService as BaseAuthenticationService;
-use User\Service\Factory\AuthenticationServiceFactory;
-use User\Service\AuthenticationService;
 
 return [
     'form_elements'      => [

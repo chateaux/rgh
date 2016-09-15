@@ -1,9 +1,9 @@
 <?php
 namespace Application\InputFilter\Factory;
 
+use Application\InputFilter\RegisterFilter;
 use Doctrine\ORM\EntityManager;
 use User\Entity\User;
-use Application\InputFilter\RegisterFilter;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
