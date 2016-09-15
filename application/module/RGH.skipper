@@ -173,7 +173,7 @@
           <attribute name="column">password</attribute>
         </orm-attributes>
       </field>
-      <field name="activationCode" type="string" size="32" required="true" unique="true" uuid="e04f2f1e-35e9-4195-8253-c654f907e9f8">
+      <field name="activationCode" type="string" size="32" unique="true" uuid="e04f2f1e-35e9-4195-8253-c654f907e9f8">
         <orm-attributes>
           <attribute name="options">
             <attribute name="fixed">true</attribute>

@@ -69,7 +69,7 @@ UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", unique=true, length=32, nullable=false, options={"fixed":true})
+     * @ORM\Column(type="string", unique=true, length=32, nullable=true, options={"fixed":true})
      */
     private $activationCode;
 
