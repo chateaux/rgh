@@ -18,3 +18,4 @@ data/DoctrineORMModule/Proxy/*
 !data/DoctrineORMModule/Proxy/.gitkeep
 .DS_Store
 .php_cs.cache
+cs_fixer_tmp_*

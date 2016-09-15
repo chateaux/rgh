@@ -1,5 +1,6 @@
 <?php
 $finder = Symfony\CS\Finder\DefaultFinder::create()
+    ->name('*.php.dist')
     ->in('config')
     ->in('module')
     ->in('public')
