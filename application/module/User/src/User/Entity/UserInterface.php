@@ -212,16 +212,6 @@ interface UserInterface
     public function setPostCode($postCode);
 
     /**
-     * @return mixed
-     */
-    public function getReferals();
-
-    /**
-     * @param mixed $referals
-     */
-    public function setReferals($referals);
-
-    /**
      * {@inheritDoc}
      */
     public function getRoles();

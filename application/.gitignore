@@ -19,3 +19,4 @@ data/DoctrineORMModule/Proxy/*
 .DS_Store
 .php_cs.cache
 cs_fixer_tmp_*
+*~

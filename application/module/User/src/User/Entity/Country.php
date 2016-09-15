@@ -37,11 +37,6 @@ class Country
     private $gmt;
 
     /**
-     * @ORM\OneToMany(targetEntity="User\Entity\User", mappedBy="country")
-     */
-    private $user;
-
-    /**
      * @return mixed
      */
     public function getCode2()
@@ -119,21 +114,5 @@ class Country
     public function setName($name)
     {
         $this->name = $name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
     }
 }

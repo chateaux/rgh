@@ -69,6 +69,11 @@ UserInterface
     private $password;
 
     /**
+     * @ORM\Column(type="string", unique=true, length=32, nullable=false, options={"fixed":true})
+     */
+    private $activationCode;
+
+    /**
      * @ORM\Column(type="string", nullable=true, name="title")
      */
     private $title;
@@ -156,7 +161,7 @@ UserInterface
     /**
      * @ORM\OneToMany(targetEntity="User\Entity\User", mappedBy="parent")
      */
-    private $referals;
+    private $referrals;
 
     /**
      * @ORM\OneToMany(targetEntity="Education\Entity\Test", mappedBy="author")
@@ -169,14 +174,14 @@ UserInterface
     private $takeTest;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User\Entity\User", inversedBy="referals")
+     * @ORM\ManyToOne(targetEntity="User\Entity\User", inversedBy="referrals")
      * @ORM\JoinColumn(name="parent", referencedColumnName="id")
      */
     private $parent;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User\Entity\Country", inversedBy="user")
-     * @ORM\JoinColumn(name="countries_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User\Entity\Country")
+     * @ORM\JoinColumn(name="countries_id", referencedColumnName="id", nullable=false)
      */
     private $country;
 
@@ -500,22 +505,6 @@ UserInterface
     }
 
     /**
-     * @return mixed
-     */
-    public function getReferals()
-    {
-        return $this->referals;
-    }
-
-    /**
-     * @param mixed $referals
-     */
-    public function setReferals($referals)
-    {
-        $this->referals = $referals;
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function getRoles()
@@ -650,5 +639,121 @@ UserInterface
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * Set activationCode
+     *
+     * @param string $activationCode
+     *
+     * @return User
+     */
+    public function setActivationCode($activationCode)
+    {
+        $this->activationCode = $activationCode;
+
+        return $this;
+    }
+
+    /**
+     * Get activationCode
+     *
+     * @return string
+     */
+    public function getActivationCode()
+    {
+        return $this->activationCode;
+    }
+
+    /**
+     * Add referral
+     *
+     * @param \User\Entity\User $referral
+     *
+     * @return User
+     */
+    public function addReferral(\User\Entity\User $referral)
+    {
+        $this->referrals[] = $referral;
+
+        return $this;
+    }
+
+    /**
+     * Remove referral
+     *
+     * @param \User\Entity\User $referral
+     */
+    public function removeReferral(\User\Entity\User $referral)
+    {
+        $this->referrals->removeElement($referral);
+    }
+
+    /**
+     * Get referrals
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReferrals()
+    {
+        return $this->referrals;
+    }
+
+    /**
+     * Add test
+     *
+     * @param \Education\Entity\Test $test
+     *
+     * @return User
+     */
+    public function addTest(\Education\Entity\Test $test)
+    {
+        $this->test[] = $test;
+
+        return $this;
+    }
+
+    /**
+     * Remove test
+     *
+     * @param \Education\Entity\Test $test
+     */
+    public function removeTest(\Education\Entity\Test $test)
+    {
+        $this->test->removeElement($test);
+    }
+
+    /**
+     * Add takeTest
+     *
+     * @param \Education\Entity\TakeTest $takeTest
+     *
+     * @return User
+     */
+    public function addTakeTest(\Education\Entity\TakeTest $takeTest)
+    {
+        $this->takeTest[] = $takeTest;
+
+        return $this;
+    }
+
+    /**
+     * Remove takeTest
+     *
+     * @param \Education\Entity\TakeTest $takeTest
+     */
+    public function removeTakeTest(\Education\Entity\TakeTest $takeTest)
+    {
+        $this->takeTest->removeElement($takeTest);
+    }
+
+    /**
+     * Remove role
+     *
+     * @param \User\Entity\HierarchicalRole $role
+     */
+    public function removeRole(\User\Entity\HierarchicalRole $role)
+    {
+        $this->roles->removeElement($role);
     }
 }

@@ -131,4 +131,34 @@ class HierarchicalRole implements HierarchicalRoleInterface
     {
         return !$this->children->isEmpty();
     }
+
+    /**
+     * Remove child
+     *
+     * @param \User\Entity\HierarchicalRole $child
+     */
+    public function removeChild(\User\Entity\HierarchicalRole $child)
+    {
+        $this->children->removeElement($child);
+    }
+
+    /**
+     * Remove permission
+     *
+     * @param \User\Entity\Permission $permission
+     */
+    public function removePermission(\User\Entity\Permission $permission)
+    {
+        $this->permissions->removeElement($permission);
+    }
+
+    /**
+     * Get permissions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPermissions()
+    {
+        return $this->permissions;
+    }
 }

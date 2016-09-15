@@ -173,6 +173,13 @@
           <attribute name="column">password</attribute>
         </orm-attributes>
       </field>
+      <field name="activationCode" type="string" size="32" required="true" unique="true" uuid="e04f2f1e-35e9-4195-8253-c654f907e9f8">
+        <orm-attributes>
+          <attribute name="options">
+            <attribute name="fixed">true</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
       <field name="title" type="string" uuid="50622595-3fa6-4a58-8aca-dad1c2b041b7">
         <orm-attributes>
           <attribute name="column">title</attribute>
@@ -247,15 +254,15 @@
       <field name="created" type="datetime" uuid="f4f089d8-0a5a-4994-96f4-851bcc86dcfd"/>
       <field name="modified" type="datetime" uuid="212e7666-950a-4550-b339-1a39d7de374c"/>
       <field name="parent" type="integer" uuid="48961aac-b898-4b70-87b5-24cf827f8105"/>
-      <field name="countries_id" type="integer" uuid="d1f182c4-9d96-42eb-9177-216a95d71b8d"/>
+      <field name="countries_id" type="integer" required="true" uuid="d1f182c4-9d96-42eb-9177-216a95d71b8d"/>
       <orm-attributes>
         <attribute name="export-file-name">User.php</attribute>
       </orm-attributes>
     </entity>
-    <association from="\User\Entity\User" to="\User\Entity\User" caption="Referals Parent" owner-alias="referals" inverse-alias="parent" many-owner="true" many-inverse="false" uuid="a36b49d6-5fab-424d-bfd9-27a44c1d640d">
+    <association from="\User\Entity\User" to="\User\Entity\User" caption="Referals Parent" owner-alias="referrals" inverse-alias="parent" many-owner="true" many-inverse="false" uuid="a36b49d6-5fab-424d-bfd9-27a44c1d640d">
       <association-field from="parent" to="id"/>
     </association>
-    <association from="\User\Entity\User" to="\User\Entity\Country" caption="Countries User" owner-alias="user" inverse-alias="country" many-owner="true" many-inverse="false" uuid="4f74acdc-5845-49d3-9d38-514017a2bac4">
+    <association from="\User\Entity\User" to="\User\Entity\Country" caption="Countries User" inverse-alias="country" many-owner="true" many-inverse="false" parent-required="true" uuid="4f74acdc-5845-49d3-9d38-514017a2bac4">
       <association-field from="countries_id" to="id"/>
     </association>
     <entity name="\User\Entity\rbu_users_roles" local-name="rbu_users_roles" namespace="\User\Entity" uuid="4f0e5439-5998-44fe-b3a4-b02c7d23b660">
