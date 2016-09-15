@@ -14,21 +14,20 @@ class PageViewHelper extends AbstractHelper
                     </div>
                     <div class="text">
                         <p>
-                            Become a human rights activist for the RGH and hold Governments, Corporations and Individuals accountable
-                            for actions that violate global treaties and local constitutions.
+                            Become a human rights activist for the <em>republic</em> and hold Governments, Corporations and Individuals accountable
+                            for actions that violate treaties and constitutions.
                         </p>
                         <p>
-                            Our goal is to protect minority groups with specifics to the following rights:
+                            Our citizens endevour to protect the rights of all groups with specifics to:
                         </p>
                         <ol>
-                            <li>Freedom of movement</li>
+                            <li>Freedom of Movement</li>
                             <li>Freedom of Association</li>
                             <li>Freedom from Slavery</li>
                         </ol>
                         <p>
-                            Our goal is to collect and human rights violations and to use this compiled data to hold violators accountable for their actions.
+                            Our citizens document, compile and take legal action against human rights violators.
                         </p>
-                        <p>We are a privately funded  organization.</p>
                     </div>
                 </div>
                 <div class="human-rights-section">
@@ -36,8 +35,11 @@ class PageViewHelper extends AbstractHelper
                         <img src="assets/global/images/logo2.jpg" >
                     </div>
                     <div class="text">
-                        <p>A cornerstone of the Republic of Good Hope is the Universal Declaration of Human Rights declared in Paris in 1948.</p>
-                        <p>We encourage your to read this document and to take the time to learn your rights. It is by knowing your rights that we can create a better world together.</p>
+                        <p>A cornerstone of the <em>republic</em> is the Universal Declaration of Human Rights declared in Paris in 1948.</p>
+                        <p>
+                        We encourage you to read this document and to take the time to learn your rights. It is by knowing your rights 
+                        that we can create a better world together.
+                        </p>
                         <p>
                             <a href="http://www.un.org/en/universal-declaration-human-rights/" target="_blank">View the Universal declaration of human rights</a></p>
                     </div>
