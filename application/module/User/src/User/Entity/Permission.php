@@ -32,7 +32,7 @@ class Permission implements PermissionInterface
     protected $name;
 
     /**
-     * 
+     *
      */
     private $description;
 

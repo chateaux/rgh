@@ -11,11 +11,12 @@ use ZfcRbac\Identity\IdentityInterface;
 
 /**
  * @ORM\Entity
- * 
+ *
  */
 class User implements
     IdentityInterface,
-    ArraySerializableInterface, UserInterface
+    ArraySerializableInterface,
+UserInterface
 {
     public function getArrayCopy()
     {

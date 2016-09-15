@@ -56,8 +56,8 @@ class Module
     private $test;
 
     /**
-     * 
-     * 
+     *
+     *
      */
     private $privilage;
 }

@@ -6,7 +6,6 @@ use Zend\View\Helper\AbstractHelper;
 
 class UserHelper extends AbstractHelper
 {
-
     protected $auth;
 
     public function __construct(

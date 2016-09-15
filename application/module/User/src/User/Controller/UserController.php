@@ -7,7 +7,6 @@ use Zend\View\Model\ViewModel;
 
 class UserController extends AbstractActionController
 {
-
     private $authService;
 
     public function __construct(

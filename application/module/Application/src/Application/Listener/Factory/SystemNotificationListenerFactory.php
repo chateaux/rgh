@@ -8,7 +8,6 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 class SystemNotificationListenerFactory implements FactoryInterface
 {
-
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $settings = $serviceLocator->get('Config');

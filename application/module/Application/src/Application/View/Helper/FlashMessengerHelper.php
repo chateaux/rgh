@@ -6,7 +6,6 @@ use Zend\View\Helper\AbstractHelper;
 
 class FlashMessengerHelper extends AbstractHelper
 {
-
     public function __invoke()
     {
         $flash = $this->getView()->flashMessenger();

@@ -5,7 +5,6 @@ use Zend\View\Helper\AbstractHelper;
 
 class CookieHelper extends AbstractHelper
 {
-
     private $cookieService;
 
     public function __construct(

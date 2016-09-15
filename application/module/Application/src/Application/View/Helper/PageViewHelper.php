@@ -5,7 +5,6 @@ use Zend\View\Helper\AbstractHelper;
 
 class PageViewHelper extends AbstractHelper
 {
-
     public function getPublicRightMenu()
     {
         return '<div class="col-sm-4 col-md-3">
