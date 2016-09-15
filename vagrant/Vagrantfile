@@ -1,0 +1,53 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+vagrant_dir = File.expand_path(File.dirname(__FILE__))
+
+Vagrant.configure(2) do |config|
+  #config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "geerlingguy/ubuntu1604"
+  config.vm.hostname = "local.republicofgoodhope.org"
+  config.vm.network "private_network", ip: "192.168.56.120"
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.vm.synced_folder "../application/", "/tmp/application-nfs", :nfs => true
+  config.bindfs.bind_folder "/tmp/application-nfs", "/var/www/local.republicofgoodhope.org/public_html/application",
+    u: 'www-data', g: 'www-data'
+
+  config.vm.synced_folder ".", "/vagrant", :nfs => true
+  if Vagrant.has_plugin?("vagrant-cachier")
+    # Configure cached packages to be shared between instances of the same base box.
+    # More info on http://fgrehm.viewdocs.io/vagrant-cachier/usage
+    config.cache.scope = :box
+    config.cache.enable :composer
+
+    config.cache.synced_folder_opts = {
+      type: :nfs,
+      mount_options: ['rw', 'vers=3', 'nolock']
+    }
+  end
+  config.vm.provision "shell",
+    inline: "apt-get install -y puppet"
+  config.librarian_puppet.destructive = false
+  config.librarian_puppet.puppetfile_dir = "puppet"
+  config.vm.provision "puppet" do |puppet|
+    puppet.synced_folder_type = "nfs"
+    puppet.module_path = ["puppet/localmodules", "puppet/modules"]
+  end
+  config.vm.provider "virtualbox" do |v|
+    v.name = "local.republicofgoodhope.org"
+    # Need at least 1024MB RAM for mysql server to behave
+    v.memory = 1024
+  end
+  # Customfile - POSSIBLY UNSTABLE
+  #
+  # Use this to insert your own (and possibly rewrite) Vagrant config lines. Helpful
+  # for mapping additional drives. If a file 'Customfile' exists in the same directory
+  # as this Vagrantfile, it will be evaluated as ruby inline as it loads.
+  #
+  # Note that if you find yourself using a Customfile for anything crazy or specifying
+  # different provisioning, then you may want to consider a new Vagrantfile entirely.
+  if File.exists?(File.join(vagrant_dir,'Customfile')) then
+    eval(IO.read(File.join(vagrant_dir,'Customfile')), binding)
+  end
+end

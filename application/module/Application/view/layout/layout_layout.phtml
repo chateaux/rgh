@@ -1,0 +1,164 @@
+<!doctype html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+
+    <?php echo $this->headTitle('Republic of Good Hope')->setSeparator(' | ')->setAutoEscape(false) ?>
+
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ->appendHttpEquiv('Content-type', 'text/html; charset=utf-8')
+    ?>
+
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/x-icon', 'href' => $this->basePath('favicon.ico')))
+        ->appendStylesheet($this->basePath('assets/global/plugins/font-awesome/css/font-awesome.min.css'))
+        ->appendStylesheet($this->basePath('assets/global/plugins/simple-line-icons/simple-line-icons.min.css'))
+        ->appendStylesheet($this->basePath('assets/global/plugins/bootstrap/css/bootstrap.min.css'))
+        ->appendStylesheet($this->basePath('assets/global/plugins/uniform/css/uniform.default.css'))
+
+        ->appendStylesheet($this->basePath('assets/global/css/components.css'))
+        ->appendStylesheet($this->basePath('assets/admin/layout3/css/layout.css'))
+        ->appendStylesheet($this->basePath('assets/global/css/styles.css')
+        );
+    ?>
+
+    <?php
+    echo $this->headScript();
+    ?>
+</head>
+<body>
+<div class="page-header">
+<div class="page-header-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-logo">
+                    <a href="<?=$this->url('home');?>"><img src="/assets/global/images/logo.png" alt="logo" class="logo-default"></a>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="top-menu">
+                    <?php
+                        if ($this->UserHelper()->getIdentity())
+                        { ?>
+                            <a class="btn btn-warning" href="<?=$this->url('logout');?>"><i class="glyphicon glyphicon-lock"></i> LOGOUT</a>
+                        <?php
+                        }
+                        else {
+                    ?>
+                    <a class="btn btn-warning" href="<?=$this->url('login');?>"><i class="glyphicon glyphicon-lock"></i> LOGIN</a>
+                    <a class="btn btn-primary" href="<?=$this->url('register');?>"><i class="glyphicon glyphicon-user"></i> Register</a>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="<?=$this->url('home');?>">Home</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?=$this->url('identity');?>">Identity</a></li>
+                            <li><a href="<?=$this->url('passport');?>">Passport</a></li>
+                            <li><a href="<?=$this->url('birth');?>">Birth</a></li>
+                            <li><a href="<?=$this->url('marriage');?>">Marriage</a></li>
+                            <li><a href="<?=$this->url('company');?>>Company</a></li>
+                            <li><a href="<?=$this->url('money');?>">Money</a></li>
+                            <li><a href="<?=$this->url('conveyance');?>">Conveyance</a></li>
+                            <li><a href="<?=$this->url('reporting');?>">Reporting</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Find human rights violators</button>
+                </form>
+                <?php
+                if ($this->UserHelper()->getIdentity())
+                { ?>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My account <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?=$this->url('user/account');?>">Overview</a></li>
+                            <li><a href="<?=$this->url('user/account');?>">News letter</a></li>
+                            <li><a href="<?=$this->url('user/account');?>">Service</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Admin</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <?php } ?>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+    <?php
+        if ($this->include_banner === true) {
+            ?>
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="banner-img"><img src="/assets/global/images/bird.png"></div>
+                    <div class="text">
+                        <h1>Republic of Good Hope</h1>
+                        <h3>Become an activist citizen of our republic</h3>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+    ?>
+<?=$this->content;?>
+
+<div class="page-footer navbar-fixed-bottom">
+    <div class="container text-center">
+        <p>Copyright © Republic of Good Hope</p>
+        <ul class="social-icons">
+            <li> <a class="facebook" data-original-title="facebook" href="javascript:;"></a> </li>
+            <li> <a class="twitter" data-original-title="twitter" href="javascript:;"></a> </li>
+            <li> <a class="googleplus" data-original-title="googleplus" href="javascript:;"></a> </li>
+        </ul>
+    </div>
+</div>
+<div class="scroll-to-top">
+    <i class="icon-arrow-up"></i>
+</div>
+<!-- END FOOTER -->
+<?php echo $this->inlineScript()
+    ->appendFile($this->basePath('assets/global/plugins/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+    ->appendFile($this->basePath('assets/global/plugins/excanvas.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+    ->prependFile($this->basePath('assets/global/plugins/jquery.min.js'))
+    ->appendFile($this->basePath('assets/global/plugins/jquery-migrate.min.js'))
+    ->appendFile($this->basePath('assets/global/plugins/jquery-ui/jquery-ui.min.js'))
+    ->appendFile($this->basePath('assets/global/plugins/bootstrap/js/bootstrap.min.js'))
+    ->appendFile($this->basePath('assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js'))
+    ->appendFile($this->basePath('assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js'))
+    ->appendFile($this->basePath('assets/global/plugins/jquery.blockui.min.js'))
+    ->appendFile($this->basePath('assets/global/plugins/jquery.cokie.min.js'))
+    ->appendFile($this->basePath('assets/global/plugins/uniform/jquery.uniform.min.js'))
+    ->appendFile($this->basePath('assets/global/scripts/metronic.js'));?>
+</body>
+</html>

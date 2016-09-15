@@ -1,0 +1,114 @@
+<?php
+    $form = $this->form;
+    $form->get('submit')->setValue('Register new user');
+    $form->get('submit')->setAttribute('class','btn green');
+    $form->prepare();
+    $csrf = $form->get('csrfcheck');
+    $user = $form->get('user');
+    $sub = $form->get('submit');
+    $mail = $user->get('email');
+    $mail->setAttribute('class','form-control');
+    $uuid = $user->get('uuid');
+    $password = $user->get('password');
+    $password->setAttribute('class','form-control');
+    $password_repeat = $user->get('passwordRepeat');
+    $password_repeat->setAttribute('class','form-control');
+    $country = $user->get('country');
+    $country->setAttribute('class','form-control');
+    $isSubscribed = $user->get('isSubscribed');
+    $isSubscribed->setAttribute('class','form-control');
+    $agreeTerms = $user->get('agreeTermsConditions');
+    $agreeTerms->setAttribute('class','form-control');
+    $form->get('submit')->setAttribute('class','btn btn-primary');
+    $form->get('submit')->setValue('Register');
+    $this->FlashMessengerHelper();
+?>
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="page-heading">
+                    <div class="icon passport"></div>
+                    <div class="heading-text">
+                        <h2>Register</h2>
+                        <h3>Become an activist citizen of our republic</h3>
+                    </div>
+                </div>
+                <div>
+                    <?=$this->form()->openTag($form);?>
+                    <?=$this->formElement($csrf);?>
+                    <?=$this->formElementErrors($csrf);?>
+                    <?=$this->formElement($uuid);?>
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><?= $this->formLabel($mail);?> <span class="require">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                                <?= $this->formElement($mail);?>
+                            </div>
+                        </div>
+                        <?php if (!empty($this->formElementErrors($mail))) echo '<div class="alert alert-danger">That email exists in the database.</div>';?>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><?= $this->formLabel($password); ?> <span class="require">*</span></label>
+                            <div class="input-group">
+                                <?=$this->formElement($password);?>
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            </div>
+                            <label class="col-lg-3 control-label"></label>
+                            <div class="help-block">
+                                <?php echo $password->getOption('instructions');?>
+                            </div>
+                        </div>
+                        <?php if (!empty($this->formElementErrors($password))) echo '<div class="alert alert-danger">'.$this->formElementErrors($password).'</div>';?>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><?=$this->formLabel($password_repeat); ?> <span class="require">*</span></label>
+                            <div class="input-group">
+                                <?=$this->formElement($password_repeat);?>
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            </div>
+                        </div>
+                        <?php if (!empty($this->formElementErrors($password_repeat))) echo '<div class="alert alert-danger">'.$this->formElementErrors($password_repeat).'</div>';?>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><?= $this->formLabel($country); ?> <span class="require">*</span></label>
+                            <div class="input-group">
+                                <?=$this->formElement($country);?>
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            </div>
+                        </div>
+                        <?php if (!empty($this->formElementErrors($country))) echo '<div class="alert alert-danger">'.$this->formElementErrors($country).'</div>';?>
+                    </div>
+                </div>
+                <div class="panel-heading"><h3 class="panel-title">Settings</h3></div>
+                <div class="panel-body">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label"><?=$this->formLabel($isSubscribed);?></label>
+                            <div class="input-group">
+                                <?= $this->formElement($isSubscribed);?>
+                            </div>
+                        </div>
+                        <?php if (!empty($this->formElementErrors($isSubscribed))) echo '<div class="alert alert-danger">'.$this->formElementErrors($isSubscribed).'</div>';?>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label"><?=$this->formLabel($agreeTerms);?> <span class="require">*</span></label>
+                            <div class="input-group">
+                                <?=$this->formElement($agreeTerms);?>
+                            </div>
+                        </div>
+                        <?php if (!empty($this->formElementErrors($agreeTerms))) echo '<div class="alert alert-danger">'.$this->formElementErrors($agreeTerms).'</div>';?>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"></label>
+                            <div class="col-md-8">
+                                <div class="input-group" style="text-align:left">
+                                    <?=$this->formElement($sub);?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?=$this->form()->closeTag();?>
+            </div>
+
+            <?=$this->PageViewHelper()->getPublicRightMenu();?>
+        </div>
+    </div>
+</div>

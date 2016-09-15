@@ -1,0 +1,432 @@
+<?xml version="1.0"?>
+<skipper version="3.2.6.1309" mvc="Zend Framework" orm="Doctrine2" name="RGH" uuid="677a04d7-5cf6-42af-a598-9acf6db71418">
+  <module name="\User/src/User/Entity" local-name="User/src/User/Entity" namespace="\User\Entity" local-namespace="\User\Entity" export-format="Doctrine2Php" export-path="User/src/User/Entity" uuid="9e957516-1b84-4306-8716-716171888ab5">
+    <entity name="\User\Entity\CanadaStates" local-name="CanadaStates" namespace="\User\Entity" uuid="454e7a1a-e67d-4d8f-99e3-9f85a74c34f5">
+      <field name="id" type="integer" required="true" primary="true" uuid="d3286af1-8e08-4023-92f6-3d97ac31211f">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">IDENTITY</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="code2" type="string" size="2" uuid="80405884-8b42-44ef-8671-9685e9b138c9">
+        <orm-attributes>
+          <attribute name="column">iso2</attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" size="255" uuid="2322edc2-1148-4c13-9fe9-3bb0dd6edb1c">
+        <orm-attributes>
+          <attribute name="column">name</attribute>
+        </orm-attributes>
+      </field>
+      <index name="id" unique="true">
+        <index-field name="id"/>
+      </index>
+      <orm-attributes>
+        <attribute name="export-file-name">CanadaStates.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\User\Entity\Country" local-name="Country" namespace="\User\Entity" uuid="0d5fdc38-6932-47c7-99a8-8a13f2b0532c">
+      <field name="id" type="integer" required="true" primary="true" uuid="e96ac5d6-9154-4c5e-9089-7a321848dbb6">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">IDENTITY</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="code2" type="string" size="2" uuid="a02b64a2-c776-4bb2-a97d-8874e1388513">
+        <orm-attributes>
+          <attribute name="column">code2</attribute>
+        </orm-attributes>
+      </field>
+      <field name="code3" type="string" size="3" uuid="1fda42b7-61c6-4bed-beeb-3672a179e280">
+        <orm-attributes>
+          <attribute name="column">code3</attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" size="255" uuid="bd139cf5-f045-4484-822d-895421e4c139">
+        <orm-attributes>
+          <attribute name="column">name</attribute>
+        </orm-attributes>
+      </field>
+      <field name="gmt" type="integer" uuid="2dc3f619-878c-4765-89c9-b276cd8c552d">
+        <orm-attributes>
+          <attribute name="column">gmt</attribute>
+        </orm-attributes>
+      </field>
+      <index name="id" unique="true">
+        <index-field name="id"/>
+      </index>
+      <orm-attributes>
+        <attribute name="export-file-name">Country.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\User\Entity\UsStates" local-name="UsStates" namespace="\User\Entity" uuid="13bb5e1f-77c6-4073-8dfa-b1ad0ccacb16">
+      <field name="id" type="integer" required="true" primary="true" uuid="76d60237-1ad4-4a7a-981e-e0b8ae09646d">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">IDENTITY</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="code2" type="string" size="2" uuid="0c2d4534-98b1-4712-b555-f036740f7e27">
+        <orm-attributes>
+          <attribute name="column">iso2</attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" size="255" uuid="1250631a-91c5-4c12-973b-6e722625bc1d">
+        <orm-attributes>
+          <attribute name="column">name</attribute>
+        </orm-attributes>
+      </field>
+      <index name="id" unique="true">
+        <index-field name="id"/>
+      </index>
+      <orm-attributes>
+        <attribute name="export-file-name">UsStates.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\User\Entity\HierarchicalRole" local-name="HierarchicalRole" namespace="\User\Entity" uuid="20ebed61-1367-457e-8e5d-4181cb3c8d02">
+      <field name="id" type="integer" required="true" primary="true" uuid="46444c27-ef7a-40cc-8cc6-a79d362c898f">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" size="48" unique="true" uuid="d628d21d-d73d-4aff-8f06-41d8e449fe33"/>
+      <orm-attributes>
+        <attribute name="repository-class">HierarchicalRoleRepository</attribute>
+        <attribute name="table">rbu_roles</attribute>
+        <attribute name="export-file-name">HierarchicalRole.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\User\Entity\rbu_roles_hierarchy" local-name="rbu_roles_hierarchy" namespace="\User\Entity" uuid="2a834ce8-8360-47bb-a11c-7d41794525e9">
+      <field name="id" type="integer" required="true" unique="true" primary="true" uuid="67574592-c9d8-40f9-8330-c53bf4545eab"/>
+      <field name="hierarchical_role_source" uuid="7f01c13f-e855-4c37-b2be-5aeb49c5f171"/>
+      <field name="hierarchical_role_target" uuid="379004fe-b8f6-4835-b85b-dc2d97466463"/>
+    </entity>
+    <many-to-many mn-entity="\User\Entity\rbu_roles_hierarchy" uuid="e17ce230-9bc2-4fd9-aec0-ebb141a2ca61">
+      <many-to-many-entity name="\User\Entity\HierarchicalRole" owning-side="true" uuid="d2b48e99-6e6c-44f6-91f6-4ec864807874">
+        <many-to-many-field from="hierarchical_role_source" to="id"/>
+      </many-to-many-entity>
+      <many-to-many-entity name="\User\Entity\HierarchicalRole" owning-side="false" alias="children" uuid="a9f215a8-fb80-40f3-8943-94419c496353">
+        <many-to-many-field from="hierarchical_role_target" to="id"/>
+      </many-to-many-entity>
+    </many-to-many>
+    <entity name="\User\Entity\rbu_roles_permissions" local-name="rbu_roles_permissions" namespace="\User\Entity" uuid="3ccb72e4-ddf2-4dad-bb4f-2a0ad6a62939">
+      <field name="id" type="integer" required="true" unique="true" primary="true" uuid="3afb94ee-68c3-4cf4-868e-a991e23149ca"/>
+      <field name="hierarchical_role_id" uuid="1cbb29c1-86ea-4bb6-9694-6d84dba1d53c"/>
+      <field name="permission_id" uuid="17bf8c87-5538-4566-99a7-0191276c0e93"/>
+    </entity>
+    <many-to-many mn-entity="\User\Entity\rbu_roles_permissions" uuid="ca117f89-7bfe-4408-afc7-86b5c2731745">
+      <many-to-many-entity name="\User\Entity\HierarchicalRole" owning-side="true" uuid="2b4b52cb-53c6-444b-a815-0e7766a7623f">
+        <many-to-many-field from="hierarchical_role_id" to="id"/>
+        <orm-attributes>
+          <attribute name="index-by">name</attribute>
+          <attribute name="fetch">EAGER</attribute>
+        </orm-attributes>
+      </many-to-many-entity>
+      <many-to-many-entity name="\User\Entity\Permission" owning-side="false" alias="permissions" uuid="9f2a884b-80bd-4818-9763-c2c2657df7ba">
+        <many-to-many-field from="permission_id" to="id"/>
+      </many-to-many-entity>
+    </many-to-many>
+    <entity name="\User\Entity\Permission" local-name="Permission" namespace="\User\Entity" uuid="3a7d104b-cd4b-4d13-a3d6-2b8e520cd74c">
+      <field name="id" type="integer" required="true" primary="true" uuid="7257b4ec-ef7a-44c4-8136-de031bbaa726">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" required="true" unique="true" uuid="6e8f95d8-9d0e-43fd-bbe2-e9aa2e03f915">
+        <orm-attributes>
+          <attribute name="column">name</attribute>
+        </orm-attributes>
+      </field>
+      <orm-attributes>
+        <attribute name="table">rbu_permissions</attribute>
+        <attribute name="export-file-name">Permission.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\User\Entity\User" local-name="User" namespace="\User\Entity" uuid="d60da801-0bcc-4934-9e23-73889cdf814c">
+      <field name="id" type="integer" required="true" unique="true" primary="true" uuid="ebc72a87-e5a6-4e73-a7e4-77668f3d3fc7">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="uuid" type="string" size="32" required="true" uuid="b3c13a94-1ee4-43b8-860f-d129a75f6cb1"/>
+      <field name="email" type="string" required="true" unique="true" uuid="3345133c-47ef-4c5c-98ea-83c3c944525e">
+        <orm-attributes>
+          <attribute name="column">email</attribute>
+        </orm-attributes>
+      </field>
+      <field name="password" type="string" required="true" uuid="773c1c95-a7b5-4ac3-8302-d0022c6504a0">
+        <orm-attributes>
+          <attribute name="column">password</attribute>
+        </orm-attributes>
+      </field>
+      <field name="title" type="string" uuid="50622595-3fa6-4a58-8aca-dad1c2b041b7">
+        <orm-attributes>
+          <attribute name="column">title</attribute>
+        </orm-attributes>
+      </field>
+      <field name="firstname" type="string" uuid="68d84cb0-904c-4093-b3ab-ba1f64c4a67d">
+        <orm-attributes>
+          <attribute name="column">firstname</attribute>
+        </orm-attributes>
+      </field>
+      <field name="surname" type="string" uuid="6ed0b15d-cb3b-4576-8d0c-ebad0d06d14b">
+        <orm-attributes>
+          <attribute name="column">lastname</attribute>
+        </orm-attributes>
+      </field>
+      <field name="dob" type="string" uuid="f4bbf858-3693-4c9b-a047-60f1fad26c61">
+        <orm-attributes>
+          <attribute name="column">dob</attribute>
+        </orm-attributes>
+      </field>
+      <field name="gender" type="boolean" uuid="18c94e70-9e6e-4581-9094-57d2604bd8c5">
+        <orm-attributes>
+          <attribute name="column">gender</attribute>
+        </orm-attributes>
+      </field>
+      <field name="identityNumber" type="string" unique="true" uuid="a69e760b-d079-4e58-9f95-79f1f96661d0">
+        <orm-attributes>
+          <attribute name="column">id_number</attribute>
+        </orm-attributes>
+      </field>
+      <field name="address1" type="string" uuid="55f6bd51-e659-46b2-b80a-366b1b2b9a68">
+        <orm-attributes>
+          <attribute name="column">address1</attribute>
+        </orm-attributes>
+      </field>
+      <field name="address2" type="string" uuid="7a82f070-3de2-4553-8df3-6f83e00e4d6c">
+        <orm-attributes>
+          <attribute name="column">address2</attribute>
+        </orm-attributes>
+      </field>
+      <field name="postCode" type="string" uuid="d28f5d92-76ae-414c-a775-8af948cc0e29">
+        <orm-attributes>
+          <attribute name="column">post_code</attribute>
+        </orm-attributes>
+      </field>
+      <field name="city" type="string" uuid="8180f04a-864f-4162-9a90-f298da503747">
+        <orm-attributes>
+          <attribute name="column">city</attribute>
+        </orm-attributes>
+      </field>
+      <field name="tell" type="string" uuid="ef4049da-27c6-4806-a19a-08f15e21ffe5">
+        <orm-attributes>
+          <attribute name="column">tell</attribute>
+        </orm-attributes>
+      </field>
+      <field name="state" type="smallint" uuid="525000bf-619f-455e-aa52-5675621c52db">
+        <orm-attributes>
+          <attribute name="column">state</attribute>
+        </orm-attributes>
+      </field>
+      <field name="isMember" type="smallint" uuid="f7d7be44-d67c-4450-9f16-ff731e568f02">
+        <orm-attributes>
+          <attribute name="column">is_member</attribute>
+        </orm-attributes>
+      </field>
+      <field name="dateConvention" type="smallint" uuid="468d5269-03a0-489b-9e33-1636532a3e22"/>
+      <field name="inviteCode" type="string" uuid="0e1c5134-49e2-4d63-b338-5881de8601d9">
+        <orm-attributes>
+          <attribute name="column">invite_code</attribute>
+        </orm-attributes>
+      </field>
+      <field name="created" type="datetime" uuid="f4f089d8-0a5a-4994-96f4-851bcc86dcfd"/>
+      <field name="modified" type="datetime" uuid="212e7666-950a-4550-b339-1a39d7de374c"/>
+      <field name="parent" type="integer" uuid="48961aac-b898-4b70-87b5-24cf827f8105"/>
+      <field name="countries_id" type="integer" uuid="d1f182c4-9d96-42eb-9177-216a95d71b8d"/>
+      <orm-attributes>
+        <attribute name="export-file-name">User.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\User\Entity\User" to="\User\Entity\User" caption="Referals Parent" owner-alias="referals" inverse-alias="parent" many-owner="true" many-inverse="false" uuid="a36b49d6-5fab-424d-bfd9-27a44c1d640d">
+      <association-field from="parent" to="id"/>
+    </association>
+    <association from="\User\Entity\User" to="\User\Entity\Country" caption="Countries User" owner-alias="user" inverse-alias="country" many-owner="true" many-inverse="false" uuid="4f74acdc-5845-49d3-9d38-514017a2bac4">
+      <association-field from="countries_id" to="id"/>
+    </association>
+    <entity name="\User\Entity\rbu_users_roles" local-name="rbu_users_roles" namespace="\User\Entity" uuid="4f0e5439-5998-44fe-b3a4-b02c7d23b660">
+      <field name="id" type="integer" required="true" unique="true" primary="true" uuid="b7524188-32c6-4fb7-bf34-9f0e0c1b3f49"/>
+      <field name="user_id" uuid="789306ed-9d6b-42cd-864d-c416a0461a0f"/>
+      <field name="role_id" uuid="32a09dba-f97c-444a-929e-530cbd0a05e6"/>
+    </entity>
+    <many-to-many mn-entity="\User\Entity\rbu_users_roles" uuid="2f539e92-9580-473e-be40-006d5f07fb62">
+      <many-to-many-entity name="\User\Entity\User" owning-side="true" uuid="0d9ae664-ac8f-468f-9635-81d04e27d757">
+        <many-to-many-field from="user_id" to="id"/>
+      </many-to-many-entity>
+      <many-to-many-entity name="\User\Entity\HierarchicalRole" owning-side="false" alias="roles" uuid="627435d9-f955-40f4-a510-99b74f85a2e0">
+        <many-to-many-field from="role_id" to="id"/>
+      </many-to-many-entity>
+    </many-to-many>
+  </module>
+  <module name="\Education/src/Education/Entity" local-name="Education/src/Education/Entity" namespace="\Education\Entity" local-namespace="\Education\Entity" export-format="Doctrine2Php" export-path="Education/src/Education/Entity" uuid="5ea0ca31-5ac9-4d15-93e8-1aae9e5e1656">
+    <entity name="\Education\Entity\Image" local-name="Image" namespace="\Education\Entity" uuid="7ca80fee-1a73-4d96-9266-83c8d3a5246a">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="13027c50-4cae-4c85-9957-d25d67348f8d"/>
+      <field name="state" type="smallint" required="true" uuid="d3e32616-1ba8-436d-a24c-10d61b1612c4"/>
+      <field name="name" type="string" required="true" uuid="22739297-7485-4f95-bf3f-960f43d3d345"/>
+      <field name="size" type="integer" required="true" uuid="f82dc7b2-5818-4c54-8059-e1ee2902e8c7"/>
+      <field name="type" type="string" required="true" uuid="e4e16e9c-e2fc-4f02-8308-59eb13ce42f2"/>
+      <field name="width" type="integer" required="true" uuid="3d808594-c3ee-4771-a4f7-f11209455c54"/>
+      <field name="height" type="integer" required="true" uuid="82317129-ac13-4b6d-8337-6d89de53b145"/>
+      <field name="module_id" type="integer" uuid="ee09fdf7-8c66-4e4c-8aad-2eeb2189eadf"/>
+      <field name="test_id" type="integer" uuid="ea665f31-b7d6-4db3-b3fe-10f388f280c9"/>
+      <field name="question_id" type="integer" uuid="5fef6835-35d4-40e4-8219-6163e007471c"/>
+      <orm-attributes>
+        <attribute name="export-file-name">Image.php</attribute>
+        <attribute name="table">image</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\Education\Entity\Image" to="\Education\Entity\Module" caption="Module Image" owner-alias="image" inverse-alias="module" many-owner="true" many-inverse="false" uuid="21ebeaa1-096d-4808-b853-4991a642f297">
+      <association-field from="module_id" to="id"/>
+    </association>
+    <association from="\Education\Entity\Image" to="\Education\Entity\Test" caption="Test Image" owner-alias="image" inverse-alias="test" many-owner="true" many-inverse="false" uuid="ecb6c384-2436-4644-874a-ac0696c99af6">
+      <association-field from="test_id" to="id"/>
+    </association>
+    <association from="\Education\Entity\Image" to="\Education\Entity\Question" caption="Question Image" owner-alias="image" inverse-alias="question" many-owner="true" many-inverse="false" uuid="0345f838-2724-4058-9123-2b19e92fa964">
+      <association-field from="question_id" to="id"/>
+    </association>
+    <entity name="\Education\Entity\Module" local-name="Module" namespace="\Education\Entity" uuid="d1845da6-7400-4852-b883-7e1da2acbdd1">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="5d28044c-6802-4cc0-841f-b020d8c3a568"/>
+      <field name="name" type="string" required="true" uuid="0924397e-549a-45bc-86d8-062fc30b26de"/>
+      <field name="created" type="datetime" required="true" uuid="ef5a1d39-a21e-42cd-b467-9631dc6c9f11"/>
+      <field name="modified" type="datetime" required="true" uuid="6c488019-7c0a-4620-80a2-c9354ba68c9d"/>
+      <field name="privilage_id" type="integer" required="true" uuid="36d7c80d-a15b-453a-8315-88bc04240055"/>
+      <field name="pointsRequire" type="integer" required="true" uuid="86052eb3-a74a-4993-9c9a-83f3e0a01f1c"/>
+      <orm-attributes>
+        <attribute name="export-file-name">Module.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\Education\Entity\Material" local-name="Material" namespace="\Education\Entity" uuid="03998d49-a082-48ed-a8b5-2bea09556ef4">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="79677ecb-6a50-4b27-8380-f783f74df1bc"/>
+      <field name="name" type="string" required="true" uuid="6040707e-7bed-4c9f-a250-49338755a212"/>
+      <field name="description" type="string" required="true" uuid="cb39b2cd-1d84-469c-a66d-3e9a62a86bf8"/>
+      <field name="location" type="string" required="true" uuid="fe075ab5-13c2-4279-937f-05a3bd24f6be"/>
+      <field name="type" description="pdf,video, etc." type="smallint" required="true" uuid="95548ac1-a333-4a08-9d76-b8aa3b663b26"/>
+      <field name="module_id" type="integer" required="true" uuid="b296639d-c329-474b-bc10-a494a427d6a3"/>
+      <field name="test_id" type="integer" required="true" uuid="dbbb9c3f-81e7-4d13-8225-34d30c753ef5"/>
+      <orm-attributes>
+        <attribute name="export-file-name">Material.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\Education\Entity\Material" to="\Education\Entity\Module" caption="Module Material" owner-alias="material" inverse-alias="module" many-owner="true" many-inverse="false" parent-required="true" uuid="902279fa-cbc7-431e-b813-48d819e9a077">
+      <association-field from="module_id" to="id"/>
+    </association>
+    <association from="\Education\Entity\Material" to="\Education\Entity\Test" caption="Test Material" owner-alias="material" inverse-alias="test" many-owner="true" many-inverse="false" parent-required="true" uuid="822110e6-e52b-426d-8a2f-3be99c82c44d">
+      <association-field from="test_id" to="id"/>
+    </association>
+    <entity name="\Education\Entity\Question" local-name="Question" namespace="\Education\Entity" uuid="6450db87-ea6d-4ec0-8001-55ed977f4f42">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="cb1d80cf-ad16-4dc4-bf2d-ccdf404422e6"/>
+      <field name="question" required="true" uuid="2addb120-44ae-4759-9f46-f7bc74c7e2ca"/>
+      <field name="test_id" type="integer" uuid="f2ae72e5-e197-4966-b2b7-97ae0bc02888"/>
+      <orm-attributes>
+        <attribute name="export-file-name">Question.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\Education\Entity\Question" to="\Education\Entity\Test" caption="Test Question" owner-alias="question" inverse-alias="test" many-owner="true" many-inverse="false" uuid="b3577e2b-5c31-440f-9534-edeba3e2c562">
+      <association-field from="test_id" to="id"/>
+    </association>
+    <entity name="\Education\Entity\Test" local-name="Test" namespace="\Education\Entity" uuid="60a1077c-0429-40c2-bd2c-43a2478ac468">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="f2fa9e4b-6f23-4a86-b307-3ce6fffaf127"/>
+      <field name="name" type="string" required="true" uuid="55165949-fd1b-402a-9c48-7858ea85d20e"/>
+      <field name="isActive" type="smallint" required="true" uuid="a4a648b6-82c3-4f86-b9e6-4dd8c0599fed"/>
+      <field name="countScore" description="The score countrs towards the user rating" type="smallint" required="true" uuid="ea750d28-d936-4da1-b41b-147c61e4e7ac"/>
+      <field name="module_id" type="integer" required="true" uuid="92638c44-df9d-4b2f-9706-f4785bec7fc9"/>
+      <field name="take_test_id" type="integer" required="true" uuid="653fa4f5-c2ae-409d-82d3-f7e21f4ba10b"/>
+      <field name="user_id" type="integer" required="true" uuid="74419377-7d0e-4186-92c1-cf2229903a2b"/>
+      <orm-attributes>
+        <attribute name="export-file-name">Test.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\Education\Entity\Test" to="\Education\Entity\Module" caption="Module Test" owner-alias="test" inverse-alias="module" many-owner="true" many-inverse="false" parent-required="true" uuid="2ed0442f-a9fc-4829-818a-00ee28ff4232">
+      <association-field from="module_id" to="id"/>
+    </association>
+    <association from="\Education\Entity\Test" to="\Education\Entity\TakeTest" caption="TakeTest Tests" owner-alias="tests" inverse-alias="takeTest" many-owner="true" many-inverse="false" parent-required="true" uuid="4539ac4b-f760-4998-adeb-a7e2f59ce0c8">
+      <association-field from="take_test_id" to="id"/>
+    </association>
+    <association from="\Education\Entity\Test" to="\User\Entity\User" caption="Author Of Test" owner-alias="test" inverse-alias="author" many-owner="true" many-inverse="false" parent-required="true" uuid="03369221-cfb9-40e3-ba30-44efd0bf1f21">
+      <association-field from="user_id" to="id"/>
+    </association>
+    <entity name="\Education\Entity\Answer" local-name="Answer" namespace="\Education\Entity" uuid="f29d4b5e-fc39-4fb6-8f9f-0c14bd8931b2">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="ffd3c07d-7115-4c19-9c8e-d7e0d1759de4"/>
+      <field name="answer" type="string" required="true" uuid="515510d1-1602-4fbe-9c6c-157c63417259"/>
+      <field name="isCorrect" type="smallint" required="true" uuid="42eb9720-3723-4e9b-8a72-7e5ae53dc789"/>
+      <field name="points" type="smallint" required="true" uuid="53561069-1a9f-4c25-a05b-b796078b3cae"/>
+      <field name="question_id" type="integer" uuid="da902809-d5b6-4e5d-a832-88ad0e30fd9d"/>
+      <orm-attributes>
+        <attribute name="export-file-name">Answer.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\Education\Entity\Answer" to="\Education\Entity\Question" caption="Question Answer" owner-alias="answer" inverse-alias="question" many-owner="true" many-inverse="false" uuid="cd2b6771-8947-4877-aeba-121d3e32a2dc">
+      <association-field from="question_id" to="id"/>
+    </association>
+    <entity name="\Education\Entity\TakeTest" local-name="TakeTest" namespace="\Education\Entity" uuid="73534826-ebb1-4adf-91fd-2e084ece4331">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="8cb5eb72-1338-478d-8a29-e0b6dd446829"/>
+      <field name="dateOfTest" type="datetime" required="true" uuid="7f611963-192d-415c-8b49-313a3b4f340e"/>
+      <field name="user_id" type="integer" required="true" uuid="9e112046-b564-49ec-8485-4d3b14b5c578"/>
+      <field name="score" type="integer" required="true" uuid="7a7111ed-000a-4a2f-9060-ba2e657cc815"/>
+      <field name="startTime" type="datetime" required="true" uuid="603cae78-b269-4306-832c-dd0dc6c45f5e"/>
+      <field name="endTime" type="datetime" required="true" uuid="6edb4671-fb4d-496e-959c-3e6810f341a7"/>
+      <field name="countScore" type="smallint" required="true" uuid="ebdb6545-f503-4e70-bc3e-929ed8a52ab6"/>
+      <orm-attributes>
+        <attribute name="export-file-name">TakeTest.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\Education\Entity\TakeTest" to="\User\Entity\User" caption="User TakeTest" owner-alias="takeTest" inverse-alias="user" many-owner="true" many-inverse="false" parent-required="true" uuid="3af526dd-2bab-4462-8202-eee52181e282">
+      <association-field from="user_id" to="id"/>
+    </association>
+    <comment caption="How this workds" description="Tests that have countScore set to true mean that we take the final score into account towards the users overall rating." uuid="ba3b9f7c-ab8f-4844-b028-e83f6072fb84"/>
+    <comment caption="How this works" description="A module is essentially a category such as &quot;common law&quot; and will be linked to material which can be found at external locations. &#10;&#10;A module can have 1 or more tests associated to it and each test is linked to material that will be found in the test.&#10;&#10;A test is linked to a number of questions and each question is linked to a number of answers whith one or more correct answers. " uuid="95158a80-16d0-4198-bb1a-4aca717937e9"/>
+  </module>
+  <visual-data>
+    <association uuid="03369221-cfb9-40e3-ba30-44efd0bf1f21" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="0345f838-2724-4058-9123-2b19e92fa964" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="21ebeaa1-096d-4808-b853-4991a642f297" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="2ed0442f-a9fc-4829-818a-00ee28ff4232" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="3af526dd-2bab-4462-8202-eee52181e282" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="4539ac4b-f760-4998-adeb-a7e2f59ce0c8" caption1-position-x="3" caption1-position-y="-6" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="4f74acdc-5845-49d3-9d38-514017a2bac4" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="822110e6-e52b-426d-8a2f-3be99c82c44d" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="902279fa-cbc7-431e-b813-48d819e9a077" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="a36b49d6-5fab-424d-bfd9-27a44c1d640d" caption1-position-x="1" caption1-position-y="0" center-position-x="0" center-position-y="-20" color="#969696"/>
+    <association uuid="b3577e2b-5c31-440f-9534-edeba3e2c562" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="cd2b6771-8947-4877-aeba-121d3e32a2dc" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="ecb6c384-2436-4644-874a-ac0696c99af6" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="#969696"/>
+    <comment uuid="95158a80-16d0-4198-bb1a-4aca717937e9" bg-color="#FFFFE0" position-x="543" position-y="485" size-x="0" size-x2="168" size-y="0" size-y2="184" txt-color="#000000"/>
+    <comment uuid="ba3b9f7c-ab8f-4844-b028-e83f6072fb84" bg-color="#FFFFE0" position-x="339" position-y="485" size-x="0" size-x2="168" size-y="0" size-y2="70" txt-color="#000000"/>
+    <entity uuid="03998d49-a082-48ed-a8b5-2bea09556ef4" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="168" position-y="432" size-x="0" size-x2="101" size-y="0" size-y2="115"/>
+    <entity uuid="0d5fdc38-6932-47c7-99a8-8a13f2b0532c" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="633" position-y="608" size-x="0" size-x2="98" size-y="0" size-y2="87"/>
+    <entity uuid="13bb5e1f-77c6-4073-8dfa-b1ad0ccacb16" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="524" position-y="715" size-x="0" size-x2="98" size-y="0" size-y2="59"/>
+    <entity uuid="20ebed61-1367-457e-8e5d-4181cb3c8d02" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="6" position-y="481" size-x="0" size-x2="93" size-y="0" size-y2="45"/>
+    <entity uuid="2a834ce8-8360-47bb-a11c-7d41794525e9" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="-39" position-y="664" size-x="0" size-x2="178" size-y="0" size-y2="74"/>
+    <entity uuid="3a7d104b-cd4b-4d13-a3d6-2b8e520cd74c" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="198" position-y="48" size-x="0" size-x2="77" size-y="0" size-y2="45"/>
+    <entity uuid="3ccb72e4-ddf2-4dad-bb4f-2a0ad6a62939" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="-35" position-y="33" size-x="0" size-x2="157" size-y="0" size-y2="74"/>
+    <entity uuid="454e7a1a-e67d-4d8f-99e3-9f85a74c34f5" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="631" position-y="713" size-x="0" size-x2="98" size-y="0" size-y2="59"/>
+    <entity uuid="4f0e5439-5998-44fe-b3a4-b02c7d23b660" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="154" position-y="193" size-x="0" size-x2="131" size-y="0" size-y2="74"/>
+    <entity uuid="60a1077c-0429-40c2-bd2c-43a2478ac468" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="363" position-y="44" size-x="0" size-x2="108" size-y="0" size-y2="115"/>
+    <entity uuid="6450db87-ea6d-4ec0-8001-55ed977f4f42" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="588" position-y="37" size-x="0" size-x2="86" size-y="0" size-y2="59"/>
+    <entity uuid="73534826-ebb1-4adf-91fd-2e084ece4331" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="356" position-y="238" size-x="0" size-x2="110" size-y="0" size-y2="115"/>
+    <entity uuid="7ca80fee-1a73-4d96-9266-83c8d3a5246a" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="589" position-y="254" size-x="0" size-x2="106" size-y="0" size-y2="157"/>
+    <entity uuid="d1845da6-7400-4852-b883-7e1da2acbdd1" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="37" position-y="111" size-x="0" size-x2="115" size-y="0" size-y2="101"/>
+    <entity uuid="d60da801-0bcc-4934-9e23-73889cdf814c" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="246" position-y="431" size-x="0" size-x2="126" size-y="0" size-y2="325"/>
+    <entity uuid="f29d4b5e-fc39-4fb6-8f9f-0c14bd8931b2" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="756" position-y="25" size-x="0" size-x2="106" size-y="0" size-y2="87"/>
+    <many-to-many-association uuid="2f539e92-9580-473e-be40-006d5f07fb62" color="#8A54A2"/>
+    <many-to-many-association uuid="ca117f89-7bfe-4408-afc7-86b5c2731745" color="#C774AF"/>
+    <many-to-many-association uuid="e17ce230-9bc2-4fd9-aec0-ebb141a2ca61" color="#B31F24"/>
+    <module uuid="5ea0ca31-5ac9-4d15-93e8-1aae9e5e1656" bg-color="#FEEFE3" position-x="791" position-y="-42" size-x="0" size-x2="900" size-y="0" size-y2="799"/>
+    <module uuid="9e957516-1b84-4306-8716-716171888ab5" bg-color="#E7F5FD" position-x="17" position-y="-42" size-x="53" size-x2="761" size-y="0" size-y2="800"/>
+    <project uuid="677a04d7-5cf6-42af-a598-9acf6db71418" size-x="53" size-x2="1792" size-y="55" size-y2="1398"/>
+  </visual-data>
+</skipper>
