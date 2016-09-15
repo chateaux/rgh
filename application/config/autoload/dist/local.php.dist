@@ -1,0 +1,25 @@
+<?php
+return [
+   'toolbox-settings' => [
+       'transport' => [
+           'type' => 'file',
+           'options' => [
+               'path' => '/tmp/'
+           ]
+       ],
+   ],
+   'doctrine' => [
+       'connection' => [
+           'orm_default' => [
+               'driverClass' =>'Doctrine\DBAL\Driver\PDOMySql\Driver',
+               'params' => [
+                   'host'     => 'localhost',
+                   'port'     => '3306',
+                   'user'     => 'rgh',
+                   'password' => 'rgh',
+                   'dbname'   => 'rgh',
+               ]
+           ]
+       ],
+	],
+];

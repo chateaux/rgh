@@ -31,5 +31,30 @@ return [
                 ],
             ],
         ],
+        'eventmanager' => [
+            'orm_default' => [
+                'subscribers' => [
+                    'Gedmo\Timestampable\TimestampableListener',
+                ],
+            ],
+        ],
+        'configuration' => [
+            'orm_default' => [
+                'naming_strategy' => 'UnderscoreNamingStrategy',
+            ],
+        ],
+        'authentication' => [
+            'orm_default' => [
+                'object_manager' => 'Doctrine\ORM\EntityManager',
+                'identity_class' => 'User\Entity\User',
+                'identity_property' => 'email',
+                'credential_property' => 'password',
+                'credential_callable' => function (\User\Entity\User $user, $passwordGiven) {
+                    $hashedPassword  = $user->getPassword();
+                    $passwordService = new \User\Service\PasswordService();
+                    return $passwordService->verify($passwordGiven, $hashedPassword);
+                },
+            ],
+        ],
     ],
 ];
