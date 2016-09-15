@@ -73,7 +73,6 @@ class RegisterForm extends Form
                 'csrfcheck',
                 'user' => [
                     'id',
-                    'uuid',
                     'email',
                     'password',
                     'passwordRepeat',

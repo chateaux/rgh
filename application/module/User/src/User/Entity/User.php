@@ -4,6 +4,7 @@ namespace User\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 use Rbac\Role\RoleInterface;
 use Zend\Stdlib\ArraySerializableInterface;
 use ZfcRbac\Identity\IdentityInterface;
@@ -52,7 +53,7 @@ class User implements
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=32, nullable=false)
+     * @ORM\Column(type="uuid_binary", unique=true, nullable=false)
      */
     private $uuid;
 
@@ -194,7 +195,7 @@ class User implements
     }
 
     /**
-     * @return mixed
+     * @return Uuid
      */
     public function getUuid()
     {
@@ -202,9 +203,9 @@ class User implements
     }
 
     /**
-     * @param mixed $uuid
+     * @param Uuid $uuid
      */
-    public function setUuid($uuid)
+    public function setUuid(Uuid $uuid)
     {
         $this->uuid = $uuid;
     }

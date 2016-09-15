@@ -2,6 +2,7 @@
 namespace Application\Controller;
 
 use Application\Library\Session\CookieService;
+use Ramsey\Uuid\Uuid;
 use User\Entity\User;
 use User\Service\AuthenticationService;
 use User\Service\UserService;
@@ -119,7 +120,7 @@ class LoginRegisterController extends AbstractActionController
             $cookie = $this->cookieService->decodeCookie();
             $aff_id = $cookie['referrer'];
 
-            $referrerObject = $this->userService->findByUuid($aff_id);
+            $referrerObject = $this->userService->findByUuid(Uuid::fromString($aff_id));
 
             if (!$referrerObject instanceof User) {
                 $referrerObject = null;
@@ -154,7 +155,7 @@ class LoginRegisterController extends AbstractActionController
         /**
          * Users require a UUID, lets generate it
          */
-        $uuid = \MdgUuid\Generator::getV4();
+        $uuid = Uuid::uuid4();
         $userObject->setUuid($uuid);
         $userObject->addRole($roleObject);
         $this->userService->customerRegister($userObject);
@@ -179,8 +180,8 @@ class LoginRegisterController extends AbstractActionController
         $redirectTo = $this->params()->fromQuery('redirectTo');
 
         if (!$activation_code) {
-            $activation_code = \MdgUuid\Generator::getV4();
-            $userObject->setActivationCode($activation_code);
+            $activation_code = Uuid::uuid4();
+            $userObject->setActivationCode($activation_code->toString());
             $this->userService->update($userObject);
         }
 

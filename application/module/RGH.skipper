@@ -162,7 +162,7 @@
           </attribute>
         </orm-attributes>
       </field>
-      <field name="uuid" type="string" size="32" required="true" uuid="b3c13a94-1ee4-43b8-860f-d129a75f6cb1"/>
+      <field name="uuid" type="uuid_binary" required="true" unique="true" uuid="b3c13a94-1ee4-43b8-860f-d129a75f6cb1"/>
       <field name="email" type="string" required="true" unique="true" uuid="3345133c-47ef-4c5c-98ea-83c3c944525e">
         <orm-attributes>
           <attribute name="column">email</attribute>

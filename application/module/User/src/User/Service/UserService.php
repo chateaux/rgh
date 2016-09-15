@@ -4,6 +4,7 @@ namespace User\Service;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use DoctrineModule\Paginator\Adapter\Selectable as SelectableAdapter;
+use Ramsey\Uuid\Uuid;
 use User\Entity\UserInterface;
 use Zend\Authentication\AuthenticationServiceInterface;
 use Zend\EventManager\EventManagerInterface;
@@ -232,10 +233,10 @@ class UserService
     }
 
     /**
-     * @param $uuid
+     * @param Uuid $uuid
      * @return mixed
      */
-    public function findByUuid($uuid)
+    public function findByUuid(Uuid $uuid)
     {
         return $this->userRepository->findOneByUuid($uuid);
     }

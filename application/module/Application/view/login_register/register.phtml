@@ -8,7 +8,6 @@
     $sub = $form->get('submit');
     $mail = $user->get('email');
     $mail->setAttribute('class','form-control');
-    $uuid = $user->get('uuid');
     $password = $user->get('password');
     $password->setAttribute('class','form-control');
     $password_repeat = $user->get('passwordRepeat');
@@ -38,7 +37,6 @@
                     <?=$this->form()->openTag($form);?>
                     <?=$this->formElement($csrf);?>
                     <?=$this->formElementErrors($csrf);?>
-                    <?=$this->formElement($uuid);?>
                     <div class="form-body">
                         <div class="form-group">
                             <label class="col-lg-3 control-label"><?= $this->formLabel($mail);?> <span class="require">*</span></label>

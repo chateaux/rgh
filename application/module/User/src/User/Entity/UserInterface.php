@@ -8,6 +8,7 @@
 namespace User\Entity;
 
 use Doctrine\Common\Collections\Collection;
+use Ramsey\Uuid\Uuid;
 use Rbac\Role\RoleInterface;
 
 /**
@@ -21,14 +22,14 @@ interface UserInterface
     public function exchangeArray(array $array);
 
     /**
-     * @return mixed
+     * @return Uuid
      */
     public function getUuid();
 
     /**
-     * @param mixed $uuid
+     * @param Uuid $uuid
      */
-    public function setUuid($uuid);
+    public function setUuid(Uuid $uuid);
 
     /**
      * @return mixed
