@@ -28,6 +28,8 @@
 
         "michaelgooden/mdg-uuid-doctrine": "^1.0",
         "michaelgooden/mdg-uuid": "^1.0",
+        "ramsey/uuid": "^3.0",
+        "ramsey/uuid-doctrine": "^1.2",
 
         "imagine/Imagine": "^0.6",
 
