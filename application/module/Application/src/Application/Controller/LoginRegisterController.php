@@ -181,7 +181,7 @@ class LoginRegisterController extends AbstractActionController
 
         if (!$activation_code) {
             $activation_code = Uuid::uuid4();
-            $userObject->setActivationCode($activation_code->toString());
+            $userObject->setActivationCode($activation_code->getHex());
             $this->userService->update($userObject);
         }
 
