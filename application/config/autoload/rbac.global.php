@@ -11,6 +11,7 @@ return [
                 'logout' => ['user'],
                 'login' => ['guest'],
                 'register' => ['guest'],
+                'register-landing' => ['guest'],
                 'identity' => ['guest'],
                 'passport' => ['guest'],
                 'birth' => ['guest'],
