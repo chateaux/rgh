@@ -27,9 +27,9 @@ Vagrant.configure(2) do |config|
     }
   end
   config.vm.provision "shell",
-    inline: "dpkg -s puppetlabs-release-pc1 || (wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb -O /tmp/puppetlabs-release-pc1-xenial.deb && dpkg -i /tmp/puppetlabs-release-pc1-xenial.deb && apt update)"
+    inline: "dpkg-query -l puppetlabs-release-pc1 || (wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb -O /tmp/puppetlabs-release-pc1-xenial.deb && dpkg -i /tmp/puppetlabs-release-pc1-xenial.deb && apt update)"
   config.vm.provision "shell",
-    inline: "dpkg -s puppet-agent || apt install -y puppet-agent"
+    inline: "dpkg-query -l puppet-agent || apt install -y puppet-agent"
   config.librarian_puppet.destructive = false
   config.librarian_puppet.puppetfile_dir = "puppet"
   config.vm.provision "puppet" do |puppet|
