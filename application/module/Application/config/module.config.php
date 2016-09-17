@@ -42,6 +42,16 @@ return [
                     ],
                 ],
             ],
+            'faq' => [
+                'type' => 'literal',
+                'options' => [
+                    'route'    => '/faq',
+                    'defaults' => [
+                        'controller' => IndexController::class,
+                        'action'     => 'faq',
+                    ],
+                ],
+            ],
             'passport' => [
                 'type' => 'literal',
                 'options' => [
@@ -242,6 +252,7 @@ return [
             'application/index/money' => __DIR__ . '/../view/public/money.phtml',
             'application/index/conveyance' => __DIR__ . '/../view/public/conveyance.phtml',
             'application/index/reporting' => __DIR__ . '/../view/public/reporting.phtml',
+            'application/index/faq' => __DIR__ . '/../view/public/faq.phtml',
             'application/login-register/login' => __DIR__ . '/../view/login_register/login.phtml',
             'application/login-register/register' => __DIR__ . '/../view/login_register/register.phtml',
             'application/login-register/register-landing' => __DIR__ . '/../view/login_register/register-landing.phtml',

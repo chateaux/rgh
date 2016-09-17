@@ -19,6 +19,7 @@ return [
                 'money' => ['guest'],
                 'conveyance' => ['guest'],
                 'reporting' => ['guest'],
+                'faq' => ['guest'],
 
                 //Account pages
                 'user/account' => ['user']

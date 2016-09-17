@@ -19,7 +19,7 @@ class IndexController extends AbstractActionController
     }
 
     /**
-     * @return array|\Zend\Http\Response
+     * @return ViewModel
      */
     public function homeAction()
     {
