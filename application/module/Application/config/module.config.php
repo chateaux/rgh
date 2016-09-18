@@ -162,6 +162,16 @@ return [
                     ],
                 ],
             ],
+            'terms' => [
+                'type' => 'literal',
+                'options' => [
+                    'route'    => '/terms',
+                    'defaults' => [
+                        'controller' => IndexController::class,
+                        'action'     => 'terms',
+                    ],
+                ],
+            ],
         ],
     ],
     'asset_manager' => [
@@ -250,6 +260,7 @@ return [
             'application/index/marriage' => __DIR__ . '/../view/public/marriage.phtml',
             'application/index/company' => __DIR__ . '/../view/public/company.phtml',
             'application/index/money' => __DIR__ . '/../view/public/money.phtml',
+            'application/index/terms' => __DIR__ . '/../view/public/terms.phtml',
             'application/index/conveyance' => __DIR__ . '/../view/public/conveyance.phtml',
             'application/index/reporting' => __DIR__ . '/../view/public/reporting.phtml',
             'application/index/faq' => __DIR__ . '/../view/public/faq.phtml',

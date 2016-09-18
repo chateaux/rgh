@@ -26,6 +26,11 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
 
+    public function termsAction()
+    {
+        return new ViewModel();
+    }
+
     public function faqAction()
     {
         return new ViewModel();
