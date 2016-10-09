@@ -11,10 +11,14 @@ use Application\Form\LoginForm;
 use Application\Form\RegisterForm;
 use Application\InputFilter\Factory\RegisterFilterFactory;
 use Application\InputFilter\RegisterFilter;
+use Application\Library\Mail\Options\ModuleOptions;
+use Application\Library\Mail\Options\ModuleOptionsFactory;
+use Application\Library\Mail\Service\MailService;
+use Application\Library\Mail\Service\MailServiceFactory;
 use Application\Library\Session\CookieService;
 use Application\Library\Session\CookieServiceFactory;
-use Application\Library\Settings\ApplicationSettings;
-use Application\Library\Settings\ApplicationSettingsFactory;
+use Application\Listener\Factory\SystemNotificationListenerFactory;
+use Application\Listener\SystemNotificationListener;
 use Application\View\Helper\FlashMessengerHelper;
 use Application\View\Helper\PageViewHelper;
 use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
@@ -162,6 +166,17 @@ return [
                     ],
                 ],
             ],
+            'confirm-email' => [
+                'type' => 'segment',
+                'options' => [
+                    'route'    => '/confirm-email/:activation_code',
+
+                    'defaults' => [
+                        'controller' => LoginRegisterController::class,
+                        'action'     => 'confirm-email',
+                    ],
+                ],
+            ],
             'terms' => [
                 'type' => 'literal',
                 'options' => [
@@ -206,8 +221,10 @@ return [
         ],
         'factories' =>
         [
+            SystemNotificationListener::class => SystemNotificationListenerFactory::class,
             CookieService::class => CookieServiceFactory::class,
-            ApplicationSettings::class => ApplicationSettingsFactory::class
+            MailService::class => MailServiceFactory::class,
+            ModuleOptions::class => ModuleOptionsFactory::class
         ]
     ],
     'controllers' => [
@@ -252,6 +269,14 @@ return [
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
             'error/exception' => __DIR__ . '/../view/error/index.phtml',
+
+            //BASE EMAIL LAYOUT
+            'email/layout' => __DIR__ . '/../view/email/layout/layout.phtml',
+            'email/layout/text' => __DIR__ . '/../view/email/layout/layout_text.phtml',
+
+            //LAYOUTS PULLED INTO BASE
+            'email/confirm' => __DIR__ . '/../view/email/confirm.phtml',
+            'email/confirm/text' => __DIR__ . '/../view/email/confirm_text.phtml',
 
             'application/index/home' => __DIR__ . '/../view/public/home.phtml',
             'application/index/identity' => __DIR__ . '/../view/public/identity.phtml',

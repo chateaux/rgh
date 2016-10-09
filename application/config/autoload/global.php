@@ -1,19 +1,10 @@
 <?php
 return [
-    'toolbox-settings' => [
+    'app-settings' => [
         'from_email'        => 'support@republicofgoodhope.org',
         'no_reply_email'    => 'no-reply@republicofgoodhope.org',
-        'app_name'          => 'Republic of Good Hope',
-        'support_desk'      => 'http://helpdesk.cinsadebt.com',
-        'support_email'     => 'support@republicofgoodhope.org',
-        'default_currency'  => 'EUR',
-        'charge_vat'        => false,
-        'vat_rate'          => 14,
+        'support_desk'      => 'http://support.republicofgoodhope.org',
         'cookie_domain'     => 'republicofgoodhope.org',
-        'application_status' => [
-            'is_live' => true,
-            'message' => 'We are busy updating the database - the site will be down for 20m'
-        ]
     ],
     'doctrine' => [
         'connection' => [

@@ -168,16 +168,11 @@
           <attribute name="column">email</attribute>
         </orm-attributes>
       </field>
+      <field name="activationCode" type="string" size="32" uuid="ab3c7a65-2dbe-4e08-9284-7bb8c704891b"/>
+      <field name="isEmailConfirmed" type="boolean" required="true" uuid="516e4b8c-f91e-4196-9f40-9e9a08134315"/>
       <field name="password" type="string" required="true" uuid="773c1c95-a7b5-4ac3-8302-d0022c6504a0">
         <orm-attributes>
           <attribute name="column">password</attribute>
-        </orm-attributes>
-      </field>
-      <field name="activationCode" type="string" size="32" unique="true" uuid="e04f2f1e-35e9-4195-8253-c654f907e9f8">
-        <orm-attributes>
-          <attribute name="options">
-            <attribute name="fixed">true</attribute>
-          </attribute>
         </orm-attributes>
       </field>
       <field name="title" type="string" uuid="50622595-3fa6-4a58-8aca-dad1c2b041b7">
@@ -185,22 +180,17 @@
           <attribute name="column">title</attribute>
         </orm-attributes>
       </field>
-      <field name="firstname" type="string" uuid="68d84cb0-904c-4093-b3ab-ba1f64c4a67d">
+      <field name="firstName" type="string" uuid="68d84cb0-904c-4093-b3ab-ba1f64c4a67d">
         <orm-attributes>
           <attribute name="column">firstname</attribute>
         </orm-attributes>
       </field>
-      <field name="surname" type="string" uuid="6ed0b15d-cb3b-4576-8d0c-ebad0d06d14b">
+      <field name="lastName" type="string" uuid="6ed0b15d-cb3b-4576-8d0c-ebad0d06d14b">
         <orm-attributes>
           <attribute name="column">lastname</attribute>
         </orm-attributes>
       </field>
-      <field name="dob" type="string" uuid="f4bbf858-3693-4c9b-a047-60f1fad26c61">
-        <orm-attributes>
-          <attribute name="column">dob</attribute>
-        </orm-attributes>
-      </field>
-      <field name="gender" type="boolean" uuid="18c94e70-9e6e-4581-9094-57d2604bd8c5">
+      <field name="gender" description="male, female, other" type="string" uuid="18c94e70-9e6e-4581-9094-57d2604bd8c5">
         <orm-attributes>
           <attribute name="column">gender</attribute>
         </orm-attributes>
@@ -235,26 +225,21 @@
           <attribute name="column">tell</attribute>
         </orm-attributes>
       </field>
-      <field name="state" type="smallint" uuid="525000bf-619f-455e-aa52-5675621c52db">
-        <orm-attributes>
-          <attribute name="column">state</attribute>
-        </orm-attributes>
-      </field>
-      <field name="isMember" type="smallint" uuid="f7d7be44-d67c-4450-9f16-ff731e568f02">
+      <field name="isMember" type="boolean" uuid="f7d7be44-d67c-4450-9f16-ff731e568f02">
         <orm-attributes>
           <attribute name="column">is_member</attribute>
         </orm-attributes>
       </field>
       <field name="dateConvention" type="smallint" uuid="468d5269-03a0-489b-9e33-1636532a3e22"/>
-      <field name="inviteCode" type="string" uuid="0e1c5134-49e2-4d63-b338-5881de8601d9">
+      <field name="dateOfBirth" type="string" uuid="f4bbf858-3693-4c9b-a047-60f1fad26c61">
         <orm-attributes>
-          <attribute name="column">invite_code</attribute>
+          <attribute name="column">dob</attribute>
         </orm-attributes>
       </field>
-      <field name="created" type="datetime" uuid="f4f089d8-0a5a-4994-96f4-851bcc86dcfd"/>
-      <field name="modified" type="datetime" uuid="212e7666-950a-4550-b339-1a39d7de374c"/>
       <field name="parent" type="integer" uuid="48961aac-b898-4b70-87b5-24cf827f8105"/>
       <field name="countries_id" type="integer" required="true" uuid="d1f182c4-9d96-42eb-9177-216a95d71b8d"/>
+      <field name="created" type="datetime" required="true" uuid="f4f089d8-0a5a-4994-96f4-851bcc86dcfd"/>
+      <field name="modified" type="datetime" required="true" uuid="212e7666-950a-4550-b339-1a39d7de374c"/>
       <orm-attributes>
         <attribute name="export-file-name">User.php</attribute>
       </orm-attributes>

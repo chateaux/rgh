@@ -13,10 +13,7 @@ use ZfcRbac\Identity\IdentityInterface;
  * @ORM\Entity
  *
  */
-class User implements
-    IdentityInterface,
-    ArraySerializableInterface,
-UserInterface
+class User implements IdentityInterface, ArraySerializableInterface, UserInterface
 {
     public function getArrayCopy()
     {
@@ -24,8 +21,8 @@ UserInterface
             'id' => $this->getId(),
             'uuid' => $this->getUuid(),
             'title' => $this->getTitle(),
-            'firstname' => $this->getFirstname(),
-            'surname' => $this->getSurname(),
+            'firstName' => $this->getFirstName(),
+            'lastName' => $this->getLastName(),
             'email' => $this->getEmail(),
             'address1' => $this->getAddress1(),
             'address2' => $this->getAddress2(),
@@ -34,8 +31,7 @@ UserInterface
             'tell' => $this->getTell(),
             'password' => $this->getPassword(),
             'gender' => $this->getGender(),
-            'state' => $this->getState(),
-            'dob' => $this->getDob(),
+            'dateOfBirth' => $this->getDob(),
             'created' => $this->getCreated(),
             'modified' => $this->getModified(),
         ];
@@ -64,14 +60,19 @@ UserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="string", length=32, nullable=true)
+     */
+    private $activationCode;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $isEmailConfirmed;
+
+    /**
      * @ORM\Column(type="string", nullable=false, name="password")
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="string", unique=true, length=32, nullable=true, options={"fixed":true})
-     */
-    private $activationCode;
 
     /**
      * @ORM\Column(type="string", nullable=true, name="title")
@@ -81,20 +82,15 @@ UserInterface
     /**
      * @ORM\Column(type="string", nullable=true, name="firstname")
      */
-    private $firstname;
+    private $firstName;
 
     /**
      * @ORM\Column(type="string", nullable=true, name="lastname")
      */
-    private $surname;
+    private $lastName;
 
     /**
-     * @ORM\Column(type="string", nullable=true, name="dob")
-     */
-    private $dob;
-
-    /**
-     * @ORM\Column(type="boolean", nullable=true, name="gender")
+     * @ORM\Column(type="string", nullable=true, name="gender")
      */
     private $gender;
 
@@ -129,12 +125,7 @@ UserInterface
     private $tell;
 
     /**
-     * @ORM\Column(type="smallint", nullable=true, name="state")
-     */
-    private $state;
-
-    /**
-     * @ORM\Column(type="smallint", nullable=true, name="is_member")
+     * @ORM\Column(type="boolean", nullable=true, name="is_member")
      */
     private $isMember;
 
@@ -144,17 +135,17 @@ UserInterface
     private $dateConvention;
 
     /**
-     * @ORM\Column(type="string", nullable=true, name="invite_code")
+     * @ORM\Column(type="string", nullable=true, name="dob")
      */
-    private $inviteCode;
+    private $dateOfBirth;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=false)
      */
     private $created;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=false)
      */
     private $modified;
 
@@ -209,11 +200,91 @@ UserInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getIsEmailConfirmed()
+    {
+        return $this->isEmailConfirmed;
+    }
+
+    /**
+     * @param mixed $isEmailConfirmed
+     */
+    public function setIsEmailConfirmed($isEmailConfirmed)
+    {
+        $this->isEmailConfirmed = $isEmailConfirmed;
+    }
+
+    /**
      * @param Uuid $uuid
      */
     public function setUuid(Uuid $uuid)
     {
         $this->uuid = $uuid;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActivationCode()
+    {
+        return $this->activationCode;
+    }
+
+    /**
+     * @param $activationCode
+     */
+    public function setActivationCode($activationCode)
+    {
+        $this->activationCode = $activationCode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateOfBirth()
+    {
+        return $this->dateOfBirth;
+    }
+
+    /**
+     * @param mixed $dateOfBirth
+     */
+    public function setDateOfBirth($dateOfBirth)
+    {
+        $this->dateOfBirth = $dateOfBirth;
     }
 
     /**
@@ -315,22 +386,6 @@ UserInterface
     /**
      * @return mixed
      */
-    public function getDob()
-    {
-        return $this->dob;
-    }
-
-    /**
-     * @param mixed $dob
-     */
-    public function setDob($dob)
-    {
-        $this->dob = $dob;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getEmail()
     {
         return $this->email;
@@ -342,22 +397,6 @@ UserInterface
     public function setEmail($email)
     {
         $this->email = $email;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-
-    /**
-     * @param mixed $firstname
-     */
-    public function setFirstname($firstname)
-    {
-        $this->firstname = $firstname;
     }
 
     /**
@@ -406,22 +445,6 @@ UserInterface
     public function setIdentityNumber($identityNumber)
     {
         $this->identityNumber = $identityNumber;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getInviteCode()
-    {
-        return $this->inviteCode;
-    }
-
-    /**
-     * @param mixed $inviteCode
-     */
-    public function setInviteCode($inviteCode)
-    {
-        $this->inviteCode = $inviteCode;
     }
 
     /**
@@ -544,39 +567,6 @@ UserInterface
         }
     }
 
-
-    /**
-     * @return mixed
-     */
-    public function getState()
-    {
-        return $this->state;
-    }
-
-    /**
-     * @param mixed $state
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSurname()
-    {
-        return $this->surname;
-    }
-
-    /**
-     * @param mixed $surname
-     */
-    public function setSurname($surname)
-    {
-        $this->surname = $surname;
-    }
-
     /**
      * @return mixed
      */
@@ -639,30 +629,6 @@ UserInterface
     public function setTitle($title)
     {
         $this->title = $title;
-    }
-
-    /**
-     * Set activationCode
-     *
-     * @param string $activationCode
-     *
-     * @return User
-     */
-    public function setActivationCode($activationCode)
-    {
-        $this->activationCode = $activationCode;
-
-        return $this;
-    }
-
-    /**
-     * Get activationCode
-     *
-     * @return string
-     */
-    public function getActivationCode()
-    {
-        return $this->activationCode;
     }
 
     /**
