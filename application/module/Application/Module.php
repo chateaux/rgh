@@ -9,20 +9,51 @@
 
 namespace Application;
 
+use Application\Listener\SystemNotificationListener;
+use User\Entity\User;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\Mvc\MvcEvent;
+use Zend\Http\PhpEnvironment\Request;
+use ZfcRbac\Service\AuthorizationService;
 
 class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 {
     public function onBootstrap(MvcEvent $e)
     {
-        if (! \Zend\Console\Console::isConsole()) {
+        if (!\Zend\Console\Console::isConsole()) {
             $t = $e->getTarget();
             $t->getEventManager()->attach(
                 $t->getServiceManager()->get('ZfcRbac\View\Strategy\RedirectStrategy')
             );
         }
+
+        $app = $e->getApplication();
+        $em  = $app->getEventManager();
+        $sm  = $app->getServiceManager();
+
+        $em->attachAggregate($sm->get(SystemNotificationListener::class));
+
+        if ($e->getRequest() instanceof Request) {
+            $authService = $sm->get(AuthorizationService::class);
+            $userObject = $authService->getIdentity();
+            if (!$userObject instanceof User) {
+                return;
+            }
+            if ($userObject->getIsEmailConfirmed() == 1) {
+                return;
+            }
+            $em->attach(MvcEvent::EVENT_DISPATCH,
+                function ($e) {
+                    $route = $e->getRouteMatch();
+                    if ($route->getMatchedRouteName() != 'register-landing') {
+                        $controller = $e->getTarget();
+                        $controller->plugin('redirect')->toUrl('/register-landing?');
+                    }
+                }
+            );
+        }
+
     }
 
     public function getConfig()
