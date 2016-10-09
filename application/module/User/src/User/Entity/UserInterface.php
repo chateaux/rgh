@@ -2,14 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: bjnash
- * Date: 7/29/16
- * Time: 2:35 PM
+ * Date: 10/9/16
+ * Time: 12:16 PM
  */
 namespace User\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Ramsey\Uuid\Uuid;
 use Rbac\Role\RoleInterface;
+
 
 /**
  * @ORM\Entity
@@ -30,6 +31,36 @@ interface UserInterface
      * @param Uuid $uuid
      */
     public function setUuid(Uuid $uuid);
+
+    /**
+     * @return mixed
+     */
+    public function getFirstName();
+
+    /**
+     * @param mixed $firstName
+     */
+    public function setFirstName($firstName);
+
+    /**
+     * @return mixed
+     */
+    public function getLastName();
+
+    /**
+     * @param mixed $lastName
+     */
+    public function setLastName($lastName);
+
+    /**
+     * @return mixed
+     */
+    public function getDateOfBirth();
+
+    /**
+     * @param mixed $dateOfBirth
+     */
+    public function setDateOfBirth($dateOfBirth);
 
     /**
      * @return mixed
@@ -94,32 +125,12 @@ interface UserInterface
     /**
      * @return mixed
      */
-    public function getDob();
-
-    /**
-     * @param mixed $dob
-     */
-    public function setDob($dob);
-
-    /**
-     * @return mixed
-     */
     public function getEmail();
 
     /**
      * @param mixed $email
      */
     public function setEmail($email);
-
-    /**
-     * @return mixed
-     */
-    public function getFirstname();
-
-    /**
-     * @param mixed $firstname
-     */
-    public function setFirstname($firstname);
 
     /**
      * @return mixed
@@ -150,16 +161,6 @@ interface UserInterface
      * @param mixed $identityNumber
      */
     public function setIdentityNumber($identityNumber);
-
-    /**
-     * @return mixed
-     */
-    public function getInviteCode();
-
-    /**
-     * @param mixed $inviteCode
-     */
-    public function setInviteCode($inviteCode);
 
     /**
      * @return mixed
@@ -237,26 +238,6 @@ interface UserInterface
     /**
      * @return mixed
      */
-    public function getState();
-
-    /**
-     * @param mixed $state
-     */
-    public function setState($state);
-
-    /**
-     * @return mixed
-     */
-    public function getSurname();
-
-    /**
-     * @param mixed $surname
-     */
-    public function setSurname($surname);
-
-    /**
-     * @return mixed
-     */
     public function getTakeTest();
 
     /**
@@ -293,4 +274,86 @@ interface UserInterface
      * @param mixed $title
      */
     public function setTitle($title);
+
+    /**
+     * @return mixed
+     */
+    public function getIsEmailConfirmed();
+
+    /**
+     * @return mixed
+     */
+    public function getActivationCode();
+
+    /**
+     * @param $activationCode
+     */
+    public function setActivationCode($activationCode);
+
+    /**
+     * @param $isEmailConfirmed
+     */
+    public function setIsEmailConfirmed($isEmailConfirmed);
+
+    /**
+     * Add referral
+     *
+     * @param \User\Entity\User $referral
+     *
+     * @return User
+     */
+    public function addReferral(\User\Entity\User $referral);
+
+    /**
+     * Remove referral
+     *
+     * @param \User\Entity\User $referral
+     */
+    public function removeReferral(\User\Entity\User $referral);
+
+    /**
+     * Get referrals
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReferrals();
+
+    /**
+     * Add test
+     *
+     * @param \Education\Entity\Test $test
+     *
+     * @return User
+     */
+    public function addTest(\Education\Entity\Test $test);
+
+    /**
+     * Remove test
+     *
+     * @param \Education\Entity\Test $test
+     */
+    public function removeTest(\Education\Entity\Test $test);
+
+    /**
+     * Add takeTest
+     *
+     * @param \Education\Entity\TakeTest $takeTest
+     *
+     * @return User
+     */
+    public function addTakeTest(\Education\Entity\TakeTest $takeTest);
+
+    /**
+     * Remove takeTest
+     *
+     * @param \Education\Entity\TakeTest $takeTest
+     */
+    public function removeTakeTest(\Education\Entity\TakeTest $takeTest);
+
+    /**
+     * Remove role
+     *
+     * @param \User\Entity\HierarchicalRole $role
+     */
+    public function removeRole(\User\Entity\HierarchicalRole $role);
 }
