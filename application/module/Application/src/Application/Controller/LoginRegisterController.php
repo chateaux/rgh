@@ -7,11 +7,11 @@ use User\Entity\User;
 use User\Service\AuthenticationService;
 use User\Service\UserService;
 use Zend\Authentication\Result;
+use Zend\EventManager\EventManagerInterface;
 use Zend\Form\FormInterface;
 use Zend\Http\PhpEnvironment\Response;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Zend\EventManager\EventManagerInterface;
 
 class LoginRegisterController extends AbstractActionController
 {
@@ -93,19 +93,16 @@ class LoginRegisterController extends AbstractActionController
 
         $userObject = $this->authService->getIdentity();
 
-        if ($userObject->getIsEmailConfirmed())
-        {
+        if ($userObject->getIsEmailConfirmed()) {
             if (null ===  $redirect_url) {
                 return $this->redirect()->toRoute('user/account');
             }
 
             return $this->redirect()->toUrl($redirect_url);
-
         }
 
 
         return $this->redirect()->toRoute('register-landing', [], ['query' => [ 'redirectTo'=> $redirect_url]]);
-
     }
 
     /**
@@ -219,7 +216,7 @@ class LoginRegisterController extends AbstractActionController
     {
         $activation_code = $this->params()->fromRoute('activation_code', false);
 
-        $params = explode('*',$activation_code);
+        $params = explode('*', $activation_code);
 
         $signature = $params[0];
         $email = $params[1];

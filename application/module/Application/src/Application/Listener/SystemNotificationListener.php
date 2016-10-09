@@ -179,7 +179,5 @@ class SystemNotificationListener implements ListenerAggregateInterface
         ];
 
         $this->sendEmail($params);
-
     }
-
 }

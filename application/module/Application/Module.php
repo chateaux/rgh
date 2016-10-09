@@ -11,10 +11,10 @@ namespace Application;
 
 use Application\Listener\SystemNotificationListener;
 use User\Entity\User;
+use Zend\Http\PhpEnvironment\Request;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\Mvc\MvcEvent;
-use Zend\Http\PhpEnvironment\Request;
 use ZfcRbac\Service\AuthorizationService;
 
 class Module implements AutoloaderProviderInterface, ConfigProviderInterface
@@ -53,7 +53,6 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
                 }
             );
         }
-
     }
 
     public function getConfig()

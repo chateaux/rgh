@@ -11,7 +11,6 @@ use Doctrine\Common\Collections\Collection;
 use Ramsey\Uuid\Uuid;
 use Rbac\Role\RoleInterface;
 
-
 /**
  * @ORM\Entity
  *
