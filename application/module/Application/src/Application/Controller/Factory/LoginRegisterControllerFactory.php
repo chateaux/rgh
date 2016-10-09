@@ -27,7 +27,8 @@ class LoginRegisterControllerFactory implements FactoryInterface
             $realSL->get('FormElementManager')->get(RegisterForm::class),
             $realSL->get(UserService::class),
             $realSL->get(AuthenticationService::class),
-            $realSL->get(CookieService::class)
+            $realSL->get(CookieService::class),
+            $realSL->get('application')->getEventManager()
         );
     }
 }
