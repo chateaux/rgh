@@ -1,8 +1,6 @@
 <?php
 namespace Application\Library\Session;
 
-use Application\Library\Settings\ApplicationSettings;
-
 /**
  * Use this service to set persistent cookies on a users machine
  * Class CookieService
@@ -12,10 +10,11 @@ use Application\Library\Settings\ApplicationSettings;
 class CookieService
 {
     /**
-     * @param ApplicationSettings $applicationSettings
+     * CookieService constructor.
+     * @param array $applicationSettings
      */
     public function __construct(
-        ApplicationSettings $applicationSettings
+        array $applicationSettings
     ) {
         $this->applicationSettings = $applicationSettings;
     }
@@ -27,7 +26,7 @@ class CookieService
      */
     public function setCookie($params)
     {
-        $domain = $this->applicationSettings->getSettings('cookie_domain');
+        $domain = $this->applicationSettings['cookie_domain'];
 
         $name = (isset($params['name'])) ? $params['name'] : 'referrer';
         $value = (isset($params['value'])) ? $params['value'] : '';
