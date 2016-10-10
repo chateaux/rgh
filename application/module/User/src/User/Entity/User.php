@@ -8,6 +8,7 @@ use Ramsey\Uuid\Uuid;
 use Rbac\Role\RoleInterface;
 use Zend\Stdlib\ArraySerializableInterface;
 use ZfcRbac\Identity\IdentityInterface;
+use Gedmo\Mapping\Annotation AS Gedmo;
 
 /**
  * @ORM\Entity
@@ -140,12 +141,14 @@ class User implements IdentityInterface, ArraySerializableInterface, UserInterfa
     private $dateOfBirth;
 
     /**
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="create")
      */
     private $created;
 
     /**
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
      */
     private $modified;
 
