@@ -6,6 +6,11 @@ return [
         'support_desk'      => 'http://support.republicofgoodhope.org',
         'cookie_domain'     => 'republicofgoodhope.org',
     ],
+    'toolbox_mail' => [
+        'transport' => [
+            'type' => 'memory',
+        ],
+    ],
     'doctrine' => [
         'connection' => [
             'orm_default' => [
