@@ -4,11 +4,11 @@ namespace User\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\Uuid;
 use Rbac\Role\RoleInterface;
 use Zend\Stdlib\ArraySerializableInterface;
 use ZfcRbac\Identity\IdentityInterface;
-use Gedmo\Mapping\Annotation AS Gedmo;
 
 /**
  * @ORM\Entity
