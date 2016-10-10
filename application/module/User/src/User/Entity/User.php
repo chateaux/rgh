@@ -4,6 +4,7 @@ namespace User\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\Uuid;
 use Rbac\Role\RoleInterface;
 use Zend\Stdlib\ArraySerializableInterface;
@@ -140,12 +141,14 @@ class User implements IdentityInterface, ArraySerializableInterface, UserInterfa
     private $dateOfBirth;
 
     /**
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="create")
      */
     private $created;
 
     /**
-     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="update")
      */
     private $modified;
 
