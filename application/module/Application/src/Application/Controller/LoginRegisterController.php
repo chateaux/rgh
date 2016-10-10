@@ -171,6 +171,7 @@ class LoginRegisterController extends AbstractActionController
         $uuid = Uuid::uuid4();
         $userObject->setUuid($uuid);
         $userObject->addRole($roleObject);
+        $userObject->setIsEmailConfirmed(0);
         $this->userService->customerRegister($userObject);
 
         $this->authService->setCredentials($userObject->getEmail(), $prg['user']['password']);
