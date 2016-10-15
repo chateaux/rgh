@@ -9,6 +9,7 @@ return [
                 //Public pages
                 'home' => ['guest'],
                 'logout' => ['user'],
+                'contract-pdf' => ['user'],
                 'login' => ['guest'],
                 'register' => ['guest'],
                 'register-landing' => ['user'],
