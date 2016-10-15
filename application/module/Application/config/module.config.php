@@ -170,7 +170,6 @@ return [
                 'type' => 'segment',
                 'options' => [
                     'route'    => '/confirm-email/:activation_code',
-
                     'defaults' => [
                         'controller' => LoginRegisterController::class,
                         'action'     => 'confirm-email',
@@ -184,6 +183,19 @@ return [
                     'defaults' => [
                         'controller' => IndexController::class,
                         'action'     => 'terms',
+                    ],
+                ],
+            ],
+            'contract-pdf' => [
+                'type' => 'segment',
+                'options' => [
+                    'route'    => '/contract-pdf/:variable',
+                    'constraints' => [
+                        'constraints' => '[upload,download]'
+                    ],
+                    'defaults' => [
+                        'controller' => IndexController::class,
+                        'action'     => 'contract-pdf',
                     ],
                 ],
             ],
@@ -202,7 +214,6 @@ return [
             'paths' => [
                 __DIR__ . '/../assets',
             ]
-
         ],
     ],
     'view_helpers'  => [
