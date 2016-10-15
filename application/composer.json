@@ -31,7 +31,9 @@
 
         "imagine/Imagine": "^0.6",
 
-        "zfcampus/zf-content-negotiation": "1.1.1|^1.1.3"
+        "zfcampus/zf-content-negotiation": "1.1.1|^1.1.3",
+
+        "tecnickcom/tcpdf": "^6.2.12"
     },
     "require-dev": {
         "zfcampus/zf-development-mode": "^3.0",
