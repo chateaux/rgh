@@ -25,6 +25,7 @@ return [
                 'faq' => ['guest'],
                 'company' => ['guest'],
                 'terms' => ['guest'],
+                'contract-pdf/download' => ['user'],
 
                 //Account pages
                 'user/account' => ['user']
