@@ -61,7 +61,7 @@ class IndexController extends AbstractActionController
             );
 
             $viewContent->setTemplate('pdf/verify-identity');
-        } elseif (strtoupper($prg['recordNumber']) == 'RG747884H' and strtoupper($prg['verificationCode']) == 'VERIFYSBCCEBPLMNX') {
+        } elseif (strtoupper($prg['recordNumber']) == 'RG74788H' and strtoupper($prg['verificationCode']) == 'VERIFYSBCCEBPLMNX') {
             $viewContent = new ViewModel(
                 [
                     'recordNumber' => strtoupper($prg['recordNumber']),
