@@ -8,6 +8,7 @@ return [
 
                 //Public pages
                 'home' => ['guest'],
+                'verify' => ['guest'],
                 'logout' => ['user'],
                 'contract-pdf' => ['user'],
                 'login' => ['guest'],
