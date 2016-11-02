@@ -1,6 +1,138 @@
-<img src="/assets/global/images/bird_logo.png" width="100">
-<h3 align="center">VERIFY IDENTITY</h3>
-<h5></h5>
-<p>
+<table border="0" cellpadding="5px">
+    <tr>
+        <td width="25%">
+            <img src="/assets/global/images/bird_logo.png" width="100"><br/>
+        </td>
+        <td width="75%" style="vertical-align: top;">
+            <h3 align="center">NOTICE: COMMON LAW IDENTITY VERIFICATION</h3>
+            <small>This verification is offered as a means to show good faith and transparency
+                when verifying the private records of RGH members.
 
-</p>
+                This verification is offered without prejudice and may not be used for entrance into any
+                foreign jurisdiction or be the basis for any claim against anyone for any reason.
+            </small>
+        </td>
+    </tr>
+</table>
+<table border="1" cellpadding="5px">
+    <tr>
+        <td><small><b>DATE: <?=date('Y-m-d');?></b><br/>
+                VERIFICATION CODE: <?=$this->verificationCode;?><br/>
+                RECORD NUMBER: <?=$this->recordNumber;?><br/>
+                SIGNATURE: <?=md5(date('Y-m-d').$this->verificationCode.$this->recordNumber);?>
+            </small>
+        </td>
+        <td><small>NOTE: Contact the Records committee should you wish to verify this documents signature:
+                https://support.republicofgoodhope.org
+            </small>
+        </td>
+    </tr>
+</table>
+<h3>MEMBER:</h3>
+<table border="0" cellpadding="5px">
+    <tr>
+        <td width="25%">
+            <img src="/assets/global/images/AZ196324052013440-LWRASZQQRBP.jpg" width="100px">
+        </td>
+        <td width="75%">
+            <table border="0">
+                <tr>
+                    <td colspan="2"><b>PRIVATE DETAILS</b></td>
+                </tr>
+                <tr>
+                    <td>NAME:</td>
+                    <td>FM PAUL DE LUCCHI</td>
+                </tr>
+                <tr>
+                    <td>RECORD NUMBER:</td>
+                    <td>AZ196324052013440</td>
+                </tr>
+
+                <tr>
+                    <td>JURISDICTION:</td>
+                    <td>PRIVATE</td>
+                </tr>
+                <tr>
+                    <td>STATUS:</td>
+                    <td>PEREGRINUS</td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>PHYSICAL ADDRESS</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2">15 Roger Street,<br/>
+                        Tygervalley, [7531, Cape Town]<br/>
+                        Geography: Southern Africa<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>RESIDENCE / DOMICILE</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2">157 Main Road,<br/>
+                        Freetown 1666,<br/>
+                        Goodhopia,<br/>
+                        Republic Of Good Hope.<br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GPS CO-ORDINATES:</td>
+                    <td>-33.8713077, 18.6405903</td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>DOCUMENTS ISSUED</b></td>
+                </tr>
+                <tr>
+                    <td>LAISEZ</td>
+                    <td>YES</td>
+                </tr>
+                <tr>
+                    <td>LICENCIA VIAJAR</td>
+                    <td>YES</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>* Competency provided, status updated to: "International Driving Permit"</td>
+                </tr>
+                <tr>
+                    <td>** PASSPORT</td>
+                    <td>YES</td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>COMPANY RECORDS</b></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>AUTOMOBILE RECORDS</b></td>
+                </tr>
+                <tr>
+                    <td>KIA</td>
+                    <td>RG74788H</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p><small>* <em>Competency is not shown on older documents, next generation documents will have this on the back.</em></small><br/>
+                            <small>** <em>This is for private purposes only, not to be used for the crossing of international borders.</em></small></p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+
