@@ -1,0 +1,77 @@
+<?php
+$form = $this->form;
+$form->setAttribute('class', 'form-horizontal form-without-legend');
+$form->prepare();
+$csrf = $form->get('csrfcheck');
+$user = $form->get('recordNumber');
+$password = $form->get('verificationCode');
+$sub  = $form->get('submit');
+$form->get('recordNumber')->setAttribute('class','form-control placeholder-no-fix');
+$form->get('verificationCode')->setAttribute('class','form-control placeholder-no-fix');
+$form->get('submit')->setAttribute('class','btn btn-primary');
+?>
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-md-9">
+                <div class="page-heading">
+                    <div class="icon company-reg"></div>
+                    <div class="heading-text">
+                        <h2>Verify</h2>
+                        <h3>Verify any record with the RGH</h3>
+                    </div>
+                </div>
+                <p>
+                    In order to provide transparency, we offer a public service that may be used in order to verify
+                    society records. If you wish to verify property held by one of our members, enter the record number
+                    and your verification code (each member has a unique code they may provide you with, or you may apply
+                    for a generic code linked to a particular region).
+                </p>
+                <p>
+                    By using this service, you agree that you and any related parties will use the information for
+                    verification purposes only.
+                </p>
+                <div>
+                    <?php $this->FlashMessengerHelper(); ?>
+                    <?=$this->form()->openTag($form);?>
+                    <?=$this->formElement($csrf);?>
+                    <?=$this->formElementErrors($csrf);?>
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><?= $this->formLabel($user);?> <span class="require">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                                <?= $this->formElement($user);?>
+                            </div>
+                        </div>
+                        <?php if (!empty($this->formElementErrors($user))) echo '<div class="alert alert-danger">That email exists in the database.</div>';?>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><?= $this->formLabel($password); ?> <span class="require">*</span></label>
+                            <div class="input-group">
+                                <?=$this->formElement($password);?>
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            </div>
+                            <label class="col-lg-3 control-label"></label>
+                            <div class="help-block">
+                                <?php echo $password->getOption('instructions');?>
+                            </div>
+                        </div>
+                        <?php if (!empty($this->formElementErrors($password))) echo '<div class="alert alert-danger">'.$this->formElementErrors($password).'</div>';?>
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-3"></label>
+                                <div class="col-md-8">
+                                    <div class="input-group" style="text-align:left">
+                                        <?=$this->formElement($sub);?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?=$this->form()->closeTag();?>
+                </div>
+            </div>
+            <?=$this->PageViewHelper()->getPublicRightMenu();?>
+        </div>
+    </div>
+</div>
