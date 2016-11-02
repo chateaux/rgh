@@ -49,8 +49,6 @@ class IndexController extends AbstractActionController
                 ]
             );
         }
-        $prg['recordNumber'] = 'RG747884H';
-        $prg['verificationCode'] = 'VERIFYSBCCEBPLMNX';
 
         if (strtoupper($prg['recordNumber']) == 'AZ196324052013440' and strtoupper($prg['verificationCode']) == 'VERIFYKXPGX5PAKQH') {
             $viewContent = new ViewModel(
@@ -59,7 +57,6 @@ class IndexController extends AbstractActionController
                     'verificationCode' => $prg['verificationCode'],
                 ]
             );
-
             $viewContent->setTemplate('pdf/verify-identity');
         } elseif (strtoupper($prg['recordNumber']) == 'RG747884H' and strtoupper($prg['verificationCode']) == 'VERIFYSBCCEBPLMNX') {
             $viewContent = new ViewModel(
@@ -112,7 +109,7 @@ class IndexController extends AbstractActionController
         $pdf->writeHTML($content, true, false, true, false, '');
 
         //Close and output PDF document
-        $pdf->Output('click_inv_12345', 'I');
+        $pdf->Output('RGH-VERIFICATION', 'I');
 
         exit;
     }
