@@ -8,7 +8,9 @@ return [
 
                 //Public pages
                 'home' => ['guest'],
+                'verify' => ['guest'],
                 'logout' => ['user'],
+                'contract-pdf' => ['user'],
                 'login' => ['guest'],
                 'register' => ['guest'],
                 'register-landing' => ['user'],
@@ -23,6 +25,7 @@ return [
                 'faq' => ['guest'],
                 'company' => ['guest'],
                 'terms' => ['guest'],
+                'contract-pdf/download' => ['user'],
 
                 //Account pages
                 'user/account' => ['user']

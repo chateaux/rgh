@@ -7,10 +7,13 @@ use Application\Controller\IndexController;
 use Application\Controller\LoginRegisterController;
 use Application\Controller\Plugin\RedirectPlugin;
 use Application\Form\Factory\RegisterFormFactory;
+use Application\Form\Factory\VerifyFormFactory;
 use Application\Form\LoginForm;
 use Application\Form\RegisterForm;
+use Application\Form\VerifyForm;
 use Application\InputFilter\Factory\RegisterFilterFactory;
 use Application\InputFilter\RegisterFilter;
+use Application\InputFilter\VerifyFilter;
 use Application\Library\Mail\Options\ModuleOptions;
 use Application\Library\Mail\Options\ModuleOptionsFactory;
 use Application\Library\Mail\Service\MailService;
@@ -33,6 +36,16 @@ return [
                     'defaults' => [
                         'controller' => IndexController::class,
                         'action'     => 'home',
+                    ],
+                ],
+            ],
+            'verify' => [
+                'type' => 'literal',
+                'options' => [
+                    'route'    => '/verify',
+                    'defaults' => [
+                        'controller' => IndexController::class,
+                        'action'     => 'verify',
                     ],
                 ],
             ],
@@ -170,7 +183,6 @@ return [
                 'type' => 'segment',
                 'options' => [
                     'route'    => '/confirm-email/:activation_code',
-
                     'defaults' => [
                         'controller' => LoginRegisterController::class,
                         'action'     => 'confirm-email',
@@ -184,6 +196,19 @@ return [
                     'defaults' => [
                         'controller' => IndexController::class,
                         'action'     => 'terms',
+                    ],
+                ],
+            ],
+            'contract-pdf' => [
+                'type' => 'segment',
+                'options' => [
+                    'route'    => '/contract-pdf/:variable',
+                    'constraints' => [
+                        'constraints' => '[upload,download]'
+                    ],
+                    'defaults' => [
+                        'controller' => IndexController::class,
+                        'action'     => 'contract-pdf',
                     ],
                 ],
             ],
@@ -202,7 +227,6 @@ return [
             'paths' => [
                 __DIR__ . '/../assets',
             ]
-
         ],
     ],
     'view_helpers'  => [
@@ -244,9 +268,13 @@ return [
         ],
         'factories'  => [
             RegisterForm::class => RegisterFormFactory::class,
+            VerifyForm::class => VerifyFormFactory::class,
         ]
     ],
     'input_filters'      => [
+        'invokables' => [
+            'VerifyFilter' => VerifyFilter::class,
+        ],
         'factories' => [
             RegisterFilter::class => RegisterFilterFactory::class,
         ]
@@ -269,16 +297,19 @@ return [
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
             'error/exception' => __DIR__ . '/../view/error/index.phtml',
-
             //BASE EMAIL LAYOUT
             'email/layout' => __DIR__ . '/../view/email/layout/layout.phtml',
             'email/layout/text' => __DIR__ . '/../view/email/layout/layout_text.phtml',
-
             //LAYOUTS PULLED INTO BASE
             'email/confirm' => __DIR__ . '/../view/email/confirm.phtml',
             'email/confirm/text' => __DIR__ . '/../view/email/confirm_text.phtml',
-
+            //PDF TEMPLATE
+            'pdf/agreement' => __DIR__ . '/../view/pdf/pdf_agreement.phtml',
+            'pdf/verify-automobile' => __DIR__ . '/../view/pdf/pdf_verify-automobile.phtml',
+            'pdf/verify-identity' => __DIR__ . '/../view/pdf/pdf_verify-identity.phtml',
+            //PUBLIC PAGES
             'application/index/home' => __DIR__ . '/../view/public/home.phtml',
+            'application/index/verify' => __DIR__ . '/../view/public/verify.phtml',
             'application/index/identity' => __DIR__ . '/../view/public/identity.phtml',
             'application/index/passport' => __DIR__ . '/../view/public/passport.phtml',
             'application/index/birth' => __DIR__ . '/../view/public/birth.phtml',

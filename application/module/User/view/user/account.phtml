@@ -7,80 +7,23 @@
                         <div>
                             <div class="container">
                                 <div class="row">
-                                    <!-- left column -->
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <div class="text-center">
-                                            <img src="/assets/global/images/profile.jpg" class="avatar img-circle img-thumbnail" alt="avatar">
-                                            <h6>Upload a different photo...</h6>
-                                            <input type="file" class="text-center center-block well well-sm">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <ul class="nav nav-pills nav-stacked">
-                                                <li class="active"><a href="#">Overview</a></li>
-                                                <li><a href="#">Edit</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- edit form column -->
-                                    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+                                    <div class="col-md-12 personal-info">
                                         <?php $this->FlashMessengerHelper(); ?>
                                         <h3>Welcome</h3>
                                         <form class="form-horizontal" role="form">
                                             <p>
-                                                Please be patient, we have just switched over to our new servers
-                                                and many of our features are yet to be added/written/installed.
+                                                Before you can become a member of the Republic of Good Hope, you must download the attached document, sign it and up-load
+                                                back to the system.
                                             </p>
                                             <p>
-                                                Your feedback is welcome, feel free to write to the volunteer support staff
-                                                by visiting and registering with our support desk:
-                                                <a href="http://support.republicofgoodhope.org" target="_blank">http://support.republicofgoodhope.org</a>
+                                                The contract outlines your agreement to behave in a manner that is fitting to the societies standards. If you do not agree to the
+                                                standards, then do not sign the document.
                                             </p>
-
-                                            <!--div class="form-group">
-                                                <label class="col-lg-3 control-label">First name:</label>
-                                                <div class="col-lg-8">
-                                                    <input class="form-control" value="" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-3 control-label">Last name:</label>
-                                                <div class="col-lg-8">
-                                                    <input class="form-control" value="" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-3 control-label">Email:</label>
-                                                <div class="col-lg-8">
-                                                    <input class="form-control" value="" type="text">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">Username:</label>
-                                                <div class="col-md-8">
-                                                    <input class="form-control" value="" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">Password:</label>
-                                                <div class="col-md-8">
-                                                    <input class="form-control" value="11111122333" type="password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">Confirm password:</label>
-                                                <div class="col-md-8">
-                                                    <input class="form-control" value="11111122333" type="password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label"></label>
-                                                <div class="col-md-8">
-                                                    <input class="btn btn-primary" value="Save Changes" type="button">
-                                                    <span></span>
-                                                    <input class="btn btn-default" value="Cancel" type="reset">
-                                                </div>
-                                            </div-->
+                                            <a class="btn btn-warning" href="<?=$this->url('contract-pdf', ['variable' => 'download']);?>"><i class="glyphicon glyphicon-lock"></i>DOWNLOAD & READ CONTRACT</a>
+                                            <a class="btn btn-success" href="<?=$this->url('contract-pdf', ['variable' => 'upload']);?>"><i class="glyphicon glyphicon-lock"></i>UPLOAD CONTRACT</a>
+                                            <p>
+                                                Once your contract has been uploaded a volunteer will check the document and approve your account.
+                                            </p>
                                         </form>
                                     </div>
                                 </div>
