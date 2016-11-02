@@ -1,5 +1,6 @@
 <?php
 namespace Application\Form;
+
 use Zend\Form\Form;
 
 class VerifyForm extends Form

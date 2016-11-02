@@ -10,10 +10,10 @@
 namespace Application\Controller;
 
 use Zend\Form\FormInterface;
+use Zend\Http\PhpEnvironment\Response;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\View\Renderer\RendererInterface;
-use Zend\Http\PhpEnvironment\Response;
 
 class IndexController extends AbstractActionController
 {
@@ -52,7 +52,7 @@ class IndexController extends AbstractActionController
         $prg['recordNumber'] = 'RG747884H';
         $prg['verificationCode'] = 'VERIFYSBCCEBPLMNX';
 
-        if (strtoupper($prg['recordNumber']) == 'AZ196324052013440' AND strtoupper($prg['verificationCode']) == 'VERIFYKXPGX5PAKQH') {
+        if (strtoupper($prg['recordNumber']) == 'AZ196324052013440' and strtoupper($prg['verificationCode']) == 'VERIFYKXPGX5PAKQH') {
             $viewContent = new ViewModel(
                 [
                     'recordNumber' => strtoupper($prg['recordNumber']),
@@ -61,8 +61,7 @@ class IndexController extends AbstractActionController
             );
 
             $viewContent->setTemplate('pdf/verify-identity');
-
-        } else if (strtoupper($prg['recordNumber']) == 'RG747884H' AND strtoupper($prg['verificationCode']) == 'VERIFYSBCCEBPLMNX') {
+        } elseif (strtoupper($prg['recordNumber']) == 'RG747884H' and strtoupper($prg['verificationCode']) == 'VERIFYSBCCEBPLMNX') {
             $viewContent = new ViewModel(
                 [
                     'recordNumber' => strtoupper($prg['recordNumber']),
@@ -170,11 +169,9 @@ class IndexController extends AbstractActionController
 
     public function contractPdfAction()
     {
-
         $variable = $this->params()->fromRoute('variable', false);
 
         if ($variable == 'download') {
-
         }
 
         // create new PDF document
